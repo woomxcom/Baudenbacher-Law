@@ -1,0 +1,6 @@
+{
+  "name": "Baudenbacher Law AG – Redesign",
+  "description": "Website-Redesign für Baudenbacher Law AG – Rechtsanwälte & Advisors in Zürich, Brüssel und Oslo mit elegantem Farbschema und rotierender City-Slideshow.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

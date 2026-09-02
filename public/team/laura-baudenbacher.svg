@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="100%" height="100%">
+  <defs>
+    <!-- Metallic Brushed Silver Background Gradient -->
+    <linearGradient id="silver-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D5D8DC"/>
+      <stop offset="35%" stop-color="#ABB2B9"/>
+      <stop offset="70%" stop-color="#85929E"/>
+      <stop offset="100%" stop-color="#566573"/>
+    </linearGradient>
+    <radialGradient id="silver-highlight" cx="40%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#F2F3F4" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#BDC3C7" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#2C3E50" stop-opacity="0.4"/>
+    </radialGradient>
+    
+    <!-- Turquoise Blouse Gradient -->
+    <linearGradient id="turquoise-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00C0E0"/>
+      <stop offset="40%" stop-color="#0099B8"/>
+      <stop offset="80%" stop-color="#007A93"/>
+      <stop offset="100%" stop-color="#005C70"/>
+    </linearGradient>
+    
+    <!-- Dark Wavy Hair Gradient -->
+    <linearGradient id="dark-hair" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3A2312"/>
+      <stop offset="50%" stop-color="#231409"/>
+      <stop offset="100%" stop-color="#120A04"/>
+    </linearGradient>
+    
+    <!-- Skin Tone Gradient -->
+    <linearGradient id="skin-tone" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FDEDEC"/>
+      <stop offset="50%" stop-color="#FADBD8"/>
+      <stop offset="100%" stop-color="#F5CBA7"/>
+    </linearGradient>
+
+    <filter id="soft-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="800" fill="url(#silver-bg)"/>
+  <rect width="600" height="800" fill="url(#silver-highlight)"/>
+
+  <!-- Subtle Metallic Texture Lines -->
+  <path d="M-100,200 L700,100 M-100,400 L700,300 M-100,600 L700,500" stroke="#FFFFFF" stroke-width="1.5" opacity="0.15"/>
+
+  <!-- Body & Turquoise Blouse (Cowl neck draped top, crossed arms) -->
+  <g filter="url(#soft-shadow)">
+    <!-- Back Shoulders -->
+    <path d="M120,520 C140,480 220,450 300,450 C380,450 460,480 480,520 L530,800 L70,800 Z" fill="url(#turquoise-grad)"/>
+
+    <!-- Turquoise Cowl Neck Drapes -->
+    <path d="M210,440 C250,490 350,490 390,440 C420,480 430,550 400,620 C350,650 250,650 200,620 C170,550 180,480 210,440 Z" fill="#00AACC"/>
+    <path d="M220,460 C260,510 340,510 380,460 C360,520 240,520 220,460 Z" fill="#007F99" opacity="0.7"/>
+    <path d="M230,485 C270,525 330,525 370,485 C350,535 250,535 230,485 Z" fill="#005F73" opacity="0.8"/>
+
+    <!-- Folded Arms Sleeves -->
+    <path d="M90,560 C120,530 220,580 300,600 C380,580 480,530 510,560 L550,800 L50,800 Z" fill="url(#turquoise-grad)"/>
+    <path d="M140,610 C200,640 400,640 460,610 L500,800 L100,800 Z" fill="#006B80"/>
+  </g>
+
+  <!-- Neck & Face -->
+  <g>
+    <!-- Neck -->
+    <path d="M255,360 L345,360 L355,460 C320,480 280,480 245,460 Z" fill="url(#skin-tone)"/>
+    <path d="M255,360 L345,360 L345,400 C300,420 300,420 255,400 Z" fill="#E5B99A" opacity="0.4"/>
+
+    <!-- Head & Face Contour -->
+    <path d="M210,240 C210,150 250,130 300,130 C350,130 390,150 390,240 C390,320 350,380 300,380 C250,380 210,320 210,240 Z" fill="url(#skin-tone)"/>
+
+    <!-- Eyebrows -->
+    <path d="M240,215 C255,208 275,210 285,218" stroke="#3A2312" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <path d="M360,215 C345,208 325,210 315,218" stroke="#3A2312" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+    <!-- Eyes -->
+    <ellipse cx="262" cy="232" rx="12" ry="8" fill="#FFFFFF"/>
+    <circle cx="262" cy="232" r="5" fill="#3D2314"/>
+    <circle cx="260" cy="230" r="1.5" fill="#FFFFFF"/>
+    <path d="M248,228 C260,222 270,222 276,228" stroke="#231409" stroke-width="2" fill="none"/>
+
+    <ellipse cx="338" cy="232" rx="12" ry="8" fill="#FFFFFF"/>
+    <circle cx="338" cy="232" r="5" fill="#3D2314"/>
+    <circle cx="336" cy="230" r="1.5" fill="#FFFFFF"/>
+    <path d="M324,228 C336,222 346,222 352,228" stroke="#231409" stroke-width="2" fill="none"/>
+
+    <!-- Nose -->
+    <path d="M298,230 L302,275 C295,280 290,282 288,278" stroke="#D9A07A" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+    <!-- Gentle Warm Smile (Lips) -->
+    <path d="M260,315 C280,335 320,335 340,315" fill="none" stroke="#C05A67" stroke-width="4" stroke-linecap="round"/>
+    <path d="M265,315 C285,325 315,325 335,315 C315,338 285,338 265,315 Z" fill="#D96B7A"/>
+
+    <!-- Cheeks & Blush -->
+    <ellipse cx="245" cy="270" rx="20" ry="12" fill="#E88888" opacity="0.25"/>
+    <ellipse cx="355" cy="270" rx="20" ry="12" fill="#E88888" opacity="0.25"/>
+  </g>
+
+  <!-- Long Wavy Dark Hair (Laura's signature styled hair) -->
+  <g filter="url(#soft-shadow)">
+    <!-- Top Crown -->
+    <path d="M195,220 C185,130 230,90 300,90 C370,90 415,130 405,220 C420,180 410,110 300,100 C190,110 180,180 195,220 Z" fill="url(#dark-hair)"/>
+    
+    <!-- Left Waves falling over shoulder -->
+    <path d="M200,150 C160,200 150,280 160,360 C170,420 190,460 210,510 C200,450 180,380 185,300 C190,240 210,180 200,150 Z" fill="url(#dark-hair)"/>
+    <path d="M170,320 C150,380 160,450 185,520 C200,460 190,400 180,350 Z" fill="#2C190D"/>
+
+    <!-- Right Waves voluminous and cascading over shoulder -->
+    <path d="M400,150 C440,200 460,270 450,350 C440,420 410,480 390,540 C410,480 435,420 435,340 C435,260 410,180 400,150 Z" fill="url(#dark-hair)"/>
+    <path d="M415,280 C445,350 440,430 410,510 C425,440 430,370 415,280 Z" fill="#2C190D"/>
+    
+    <!-- Hair strands over forehead -->
+    <path d="M220,150 C260,130 310,140 330,170 C280,145 240,155 220,150 Z" fill="#4A2E1B"/>
+  </g>
+
+  <!-- Elegant Gold Earrings -->
+  <circle cx="215" cy="275" r="5" fill="#C6A15B"/>
+  <circle cx="385" cy="275" r="5" fill="#C6A15B"/>
+</svg>

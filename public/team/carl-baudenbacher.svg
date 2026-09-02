@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="100%" height="100%">
+  <defs>
+    <!-- Dark Studio Studio Background -->
+    <linearGradient id="dark-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2D3436"/>
+      <stop offset="50%" stop-color="#1E272C"/>
+      <stop offset="100%" stop-color="#11181B"/>
+    </linearGradient>
+    <radialGradient id="dark-spotlight" cx="35%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#4A5568" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.9"/>
+    </radialGradient>
+
+    <!-- Navy Pinstripe Suit Gradient -->
+    <linearGradient id="suit-navy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#090D16"/>
+    </linearGradient>
+
+    <!-- White Beard & Hair Gradient -->
+    <linearGradient id="white-hair" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="60%" stop-color="#E2E8F0"/>
+      <stop offset="100%" stop-color="#CBD5E1"/>
+    </linearGradient>
+
+    <!-- Medium Blue Patterned Tie Gradient -->
+    <linearGradient id="blue-tie" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="50%" stop-color="#1D4ED8"/>
+      <stop offset="100%" stop-color="#1E40AF"/>
+    </linearGradient>
+
+    <linearGradient id="carl-skin" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FDF2E9"/>
+      <stop offset="50%" stop-color="#F6DDCC"/>
+      <stop offset="100%" stop-color="#E5AA70"/>
+    </linearGradient>
+
+    <filter id="carl-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="800" fill="url(#dark-bg)"/>
+  <rect width="600" height="800" fill="url(#dark-spotlight)"/>
+
+  <!-- Pinstripe Accent Wall / Studio Panel -->
+  <rect x="470" y="0" width="130" height="800" fill="#17202A" opacity="0.6"/>
+
+  <!-- Body & Suit (Dark Navy Pinstripe Suit) -->
+  <g filter="url(#carl-shadow)">
+    <!-- Shoulders -->
+    <path d="M100,520 C130,460 220,430 300,430 C380,430 470,460 500,520 L550,800 L50,800 Z" fill="url(#suit-navy)"/>
+    
+    <!-- Fine Pinstripes on Suit -->
+    <path d="M160,450 L140,800 M210,440 L190,800 M260,435 L240,800 M340,435 L360,800 M390,440 L410,800 M440,450 L460,800" stroke="#38BDF8" stroke-width="1" opacity="0.25"/>
+
+    <!-- Crisp White Dress Shirt Collar & V-Neck -->
+    <path d="M235,420 L300,530 L365,420 L350,380 L250,380 Z" fill="#FFFFFF"/>
+    <!-- Left Shirt Collar Flap -->
+    <path d="M240,380 L285,450 L275,380 Z" fill="#E2E8F0"/>
+    <!-- Right Shirt Collar Flap -->
+    <path d="M360,380 L315,450 L325,380 Z" fill="#CBD5E1"/>
+
+    <!-- Blue Patterned Tie -->
+    <path d="M285,440 L315,440 L325,650 L300,680 L275,650 Z" fill="url(#blue-tie)"/>
+    <!-- Tie Pattern (Micro Grid / Dots) -->
+    <pattern id="tie-dots" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+      <circle cx="5" cy="5" r="1.5" fill="#93C5FD"/>
+    </pattern>
+    <path d="M285,440 L315,440 L325,650 L300,680 L275,650 Z" fill="url(#tie-dots)" opacity="0.7"/>
+
+    <!-- Suit Lapels -->
+    <path d="M150,510 L250,420 L280,550 L180,800 Z" fill="#111827"/>
+    <path d="M450,510 L350,420 L320,550 L420,800 Z" fill="#0B0F19"/>
+  </g>
+
+  <!-- Neck & Head -->
+  <g>
+    <!-- Neck -->
+    <path d="M255,340 L345,340 L350,420 L250,420 Z" fill="url(#carl-skin)"/>
+    <path d="M255,340 L345,340 L345,380 C300,400 300,400 255,380 Z" fill="#D68910" opacity="0.3"/>
+
+    <!-- Head Contour (Bald Top, Dignified Shape) -->
+    <path d="M210,210 C210,120 250,100 300,100 C350,100 390,120 390,210 C390,280 350,350 300,350 C250,350 210,280 210,210 Z" fill="url(#carl-skin)"/>
+
+    <!-- Bald Head Highlights -->
+    <ellipse cx="300" cy="130" rx="60" ry="25" fill="#FFFFFF" opacity="0.3"/>
+
+    <!-- Hair on sides (White / Grey) -->
+    <path d="M210,180 C205,220 215,260 220,280 C212,250 210,210 215,180 Z" fill="url(#white-hair)"/>
+    <path d="M390,180 C395,220 385,260 380,280 C388,250 390,210 385,180 Z" fill="url(#white-hair)"/>
+
+    <!-- Eyebrows (White/Light Grey Bushy Eyebrows) -->
+    <path d="M238,200 C255,192 272,195 282,202" stroke="url(#white-hair)" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <path d="M362,200 C345,192 328,195 318,202" stroke="url(#white-hair)" stroke-width="4" stroke-linecap="round" fill="none"/>
+
+    <!-- Eyes (Wise, Intelligent expression) -->
+    <ellipse cx="260" cy="218" rx="11" ry="7" fill="#FFFFFF"/>
+    <circle cx="260" cy="218" r="4.5" fill="#2C3E50"/>
+    <circle cx="258" cy="216" r="1.5" fill="#FFFFFF"/>
+
+    <ellipse cx="340" cy="218" rx="11" ry="7" fill="#FFFFFF"/>
+    <circle cx="340" cy="218" r="4.5" fill="#2C3E50"/>
+    <circle cx="338" cy="216" r="1.5" fill="#FFFFFF"/>
+
+    <!-- Nose -->
+    <path d="M298,212 L302,260 C294,266 288,266 285,262" stroke="#C07040" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+    <!-- Trimmed Full White Beard & Mustache (Carl's signature beard) -->
+    <!-- Mustache -->
+    <path d="M255,270 C280,262 300,272 300,278 C300,272 320,262 345,270 C355,282 340,300 300,295 C260,300 245,282 255,270 Z" fill="url(#white-hair)"/>
+    <!-- Full Beard covering chin and jawline -->
+    <path d="M220,250 C215,310 240,370 300,370 C360,370 385,310 380,250 C370,300 350,355 300,355 C250,355 230,300 220,250 Z" fill="url(#white-hair)"/>
+    <path d="M260,320 C280,335 320,335 340,320 C320,345 280,345 260,320 Z" fill="#E2E8F0" opacity="0.8"/>
+  </g>
+
+  <!-- Wire-rimmed Glasses Held in Hand (Signature Detail from Carl's photo) -->
+  <g filter="url(#carl-shadow)">
+    <!-- Right Hand / Glasses Positioned lower right -->
+    <path d="M410,650 C430,620 460,630 480,660 L520,780 L440,800 Z" fill="url(#carl-skin)"/>
+    <!-- Wire-Rim Glasses (Golden/Metallic Frames) -->
+    <circle cx="440" cy="610" r="18" stroke="#C6A15B" stroke-width="2.5" fill="none"/>
+    <circle cx="482" cy="605" r="18" stroke="#C6A15B" stroke-width="2.5" fill="none"/>
+    <line x1="458" y1="608" x2="464" y2="606" stroke="#C6A15B" stroke-width="2.5"/>
+    <line x1="422" y1="610" x2="400" y2="620" stroke="#C6A15B" stroke-width="2"/>
+  </g>
+</svg>

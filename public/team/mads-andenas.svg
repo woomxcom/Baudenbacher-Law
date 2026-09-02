@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="100%" height="100%">
+  <defs>
+    <!-- Terracotta Red Architectural Wall Background -->
+    <linearGradient id="terracotta-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A93226"/>
+      <stop offset="50%" stop-color="#88241C"/>
+      <stop offset="100%" stop-color="#641E16"/>
+    </linearGradient>
+
+    <!-- Grey Tweed Suit Jacket Gradient -->
+    <linearGradient id="tweed-jacket" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5D6D7E"/>
+      <stop offset="50%" stop-color="#46525E"/>
+      <stop offset="100%" stop-color="#2E3740"/>
+    </linearGradient>
+
+    <!-- Cream / Off-White Sweater -->
+    <linearGradient id="cream-sweater" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FDFEFE"/>
+      <stop offset="50%" stop-color="#F2F4F4"/>
+      <stop offset="100%" stop-color="#E5E8E8"/>
+    </linearGradient>
+
+    <linearGradient id="mads-skin" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FDF2E9"/>
+      <stop offset="50%" stop-color="#F7DC6F"/>
+      <stop offset="100%" stop-color="#E59866"/>
+    </linearGradient>
+
+    <!-- Hair Color -->
+    <linearGradient id="mads-hair" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7D6608"/>
+      <stop offset="50%" stop-color="#5B4A06"/>
+      <stop offset="100%" stop-color="#3E3203"/>
+    </linearGradient>
+
+    <filter id="mads-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Background Terracotta Red Wall -->
+  <rect width="600" height="800" fill="url(#terracotta-bg)"/>
+
+  <!-- Perforated Red Metal Architectural Panel Detail on Right (from Mads' photo) -->
+  <rect x="460" y="0" width="140" height="800" fill="#922B21"/>
+  <line x1="460" y1="0" x2="460" y2="800" stroke="#C0392B" stroke-width="3"/>
+  <pattern id="panel-dots" x="0" y="0" width="15" height="15" patternUnits="userSpaceOnUse">
+    <circle cx="7.5" cy="7.5" r="2" fill="#641E16"/>
+  </pattern>
+  <rect x="460" y="0" width="140" height="800" fill="url(#panel-dots)" opacity="0.6"/>
+
+  <!-- Body & Clothing (Tweed Jacket, Off-white Sweater, White Shirt) -->
+  <g filter="url(#mads-shadow)">
+    <!-- Tweed Jacket Shoulders -->
+    <path d="M80,500 C110,440 210,420 290,420 C370,420 460,440 490,500 L540,800 L40,800 Z" fill="url(#tweed-jacket)"/>
+
+    <!-- Tweed Texture Effect -->
+    <pattern id="tweed-pat" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M0,0 L8,8 M8,0 L0,8" stroke="#AEB6BF" stroke-width="0.8" opacity="0.3"/>
+    </pattern>
+    <path d="M80,500 C110,440 210,420 290,420 C370,420 460,440 490,500 L540,800 L40,800 Z" fill="url(#tweed-pat)"/>
+
+    <!-- Cream Sweater V-Neck -->
+    <path d="M220,400 L290,530 L360,400 L340,370 L240,370 Z" fill="url(#cream-sweater)"/>
+    <path d="M230,400 L290,510 L350,400" fill="none" stroke="#D5D8DC" stroke-width="12"/>
+
+    <!-- Open Collar Crisp White Shirt -->
+    <path d="M245,360 L290,440 L335,360 L320,340 L260,340 Z" fill="#FFFFFF"/>
+    <path d="M245,360 L275,420 L260,350 Z" fill="#E5E8E8"/>
+    <path d="M335,360 L305,420 L320,350 Z" fill="#D7DBDD"/>
+
+    <!-- Tweed Lapels -->
+    <path d="M130,490 L230,410 L260,540 L160,800 Z" fill="#34495E"/>
+    <path d="M440,490 L340,410 L310,540 L410,800 Z" fill="#2C3E50"/>
+  </g>
+
+  <!-- Neck & Face -->
+  <g>
+    <!-- Neck -->
+    <path d="M245,320 L335,320 L340,400 L240,400 Z" fill="url(#mads-skin)"/>
+    <path d="M245,320 L335,320 L335,360 C290,380 290,380 245,360 Z" fill="#D35400" opacity="0.25"/>
+
+    <!-- Head & Face Contour -->
+    <path d="M205,210 C205,120 245,100 290,100 C335,100 375,120 375,210 C375,290 335,350 290,350 C245,350 205,290 205,210 Z" fill="url(#mads-skin)"/>
+
+    <!-- Hair (Light Brown, Receding at temples) -->
+    <path d="M205,180 C200,120 235,95 290,95 C345,95 380,120 375,180 C360,130 335,115 290,115 C245,115 220,130 205,180 Z" fill="url(#mads-hair)"/>
+
+    <!-- Eyebrows -->
+    <path d="M232,200 C248,192 265,195 275,200" stroke="url(#mads-hair)" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <path d="M348,200 C332,192 315,195 305,200" stroke="url(#mads-hair)" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+    <!-- Eyes (Warm, smiling blue-grey eyes) -->
+    <ellipse cx="252" cy="216" rx="10" ry="6.5" fill="#FFFFFF"/>
+    <circle cx="252" cy="216" r="4.5" fill="#34495E"/>
+    <circle cx="250" cy="214" r="1.5" fill="#FFFFFF"/>
+
+    <ellipse cx="328" cy="216" rx="10" ry="6.5" fill="#FFFFFF"/>
+    <circle cx="328" cy="216" r="4.5" fill="#34495E"/>
+    <circle cx="326" cy="214" r="1.5" fill="#FFFFFF"/>
+
+    <!-- Smile Lines around eyes (Crow's feet) -->
+    <path d="M238,212 L232,210 M238,218 L230,220" stroke="#D35400" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    <path d="M342,212 L348,210 M342,218 L350,220" stroke="#D35400" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+
+    <!-- Nose -->
+    <path d="M288,210 L292,258 C285,262 280,262 277,258" stroke="#C0392B" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+    <!-- Light Stubble / Beard Shadow -->
+    <path d="M230,260 C230,320 250,342 290,342 C330,342 350,320 350,260 C340,310 320,335 290,335 C260,335 240,310 230,260 Z" fill="#7F8C8D" opacity="0.3"/>
+
+    <!-- Friendly Smile -->
+    <path d="M250,285 C270,305 310,305 330,285" fill="none" stroke="#A93226" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M255,285 C272,295 308,295 325,285 C310,308 270,308 255,285 Z" fill="#C0392B"/>
+  </g>
+</svg>

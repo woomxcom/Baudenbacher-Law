@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="100%" height="100%">
+  <defs>
+    <!-- Deep Navy Studio Backdrop -->
+    <linearGradient id="mohamed-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1B2A47"/>
+      <stop offset="50%" stop-color="#101B2B"/>
+      <stop offset="100%" stop-color="#080E18"/>
+    </linearGradient>
+
+    <!-- Navy Windowpane Suit -->
+    <linearGradient id="mohamed-suit" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#090D16"/>
+    </linearGradient>
+
+    <!-- Burgundy Dotted Tie -->
+    <linearGradient id="burgundy-tie" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#800020"/>
+      <stop offset="50%" stop-color="#660019"/>
+      <stop offset="100%" stop-color="#4D0013"/>
+    </linearGradient>
+
+    <!-- Dark Hair & Beard -->
+    <linearGradient id="dark-hair-mo" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1A1A1A"/>
+      <stop offset="50%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+
+    <linearGradient id="mohamed-skin" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F5CBA7"/>
+      <stop offset="50%" stop-color="#E5AA70"/>
+      <stop offset="100%" stop-color="#CA7F40"/>
+    </linearGradient>
+
+    <filter id="mohamed-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="800" fill="url(#mohamed-bg)"/>
+
+  <!-- Body & Suit (Dark Navy Plaid / Windowpane Suit) -->
+  <g filter="url(#mohamed-shadow)">
+    <!-- Shoulders -->
+    <path d="M100,510 C130,450 220,420 300,420 C380,420 470,450 500,510 L550,800 L50,800 Z" fill="url(#mohamed-suit)"/>
+
+    <!-- Windowpane Grid Patterns -->
+    <path d="M150,450 L120,800 M210,435 L180,800 M270,430 L250,800 M330,430 L350,800 M390,435 L420,800 M450,450 L480,800" stroke="#38BDF8" stroke-width="1" opacity="0.2"/>
+    <path d="M90,520 L510,520 M70,600 L530,600 M50,680 L550,680" stroke="#38BDF8" stroke-width="1" opacity="0.2"/>
+
+    <!-- Crisp White Dress Shirt & Collar -->
+    <path d="M235,400 L300,520 L365,400 L345,360 L255,360 Z" fill="#FFFFFF"/>
+    <path d="M240,360 L285,430 L270,360 Z" fill="#E2E8F0"/>
+    <path d="M360,360 L315,430 L330,360 Z" fill="#CBD5E1"/>
+
+    <!-- Burgundy Dotted Tie -->
+    <path d="M285,420 L315,420 L325,660 L300,690 L275,660 Z" fill="url(#burgundy-tie)"/>
+    <pattern id="burgundy-dots" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="1.2" fill="#FADBD8"/>
+    </pattern>
+    <path d="M285,420 L315,420 L325,660 L300,690 L275,660 Z" fill="url(#burgundy-dots)" opacity="0.8"/>
+
+    <!-- Suit Lapels -->
+    <path d="M140,500 L245,410 L275,540 L170,800 Z" fill="#111827"/>
+    <path d="M460,500 L355,410 L325,540 L430,800 Z" fill="#0B0F19"/>
+  </g>
+
+  <!-- Neck & Head -->
+  <g>
+    <!-- Neck -->
+    <path d="M250,320 L350,320 L355,400 L245,400 Z" fill="url(#mohamed-skin)"/>
+    <path d="M250,320 L350,320 L350,360 C300,380 300,380 250,360 Z" fill="#A04000" opacity="0.3"/>
+
+    <!-- Head Contour -->
+    <path d="M205,200 C205,110 245,90 300,90 C355,90 395,110 395,200 C395,280 355,340 300,340 C245,340 205,280 205,200 Z" fill="url(#mohamed-skin)"/>
+
+    <!-- Short Styled Dark Hair -->
+    <path d="M195,190 C190,110 230,75 300,75 C370,75 410,110 405,190 C390,110 360,90 300,90 C240,90 210,110 195,190 Z" fill="url(#dark-hair-mo)"/>
+
+    <!-- Well-Groomed Short Dark Beard & Mustache (Mohamed's beard style) -->
+    <path d="M210,210 C200,280 230,338 300,338 C370,338 400,280 390,210 C380,270 360,325 300,325 C240,325 220,270 210,210 Z" fill="url(#dark-hair-mo)"/>
+    <!-- Mustache -->
+    <path d="M250,252 C275,245 295,252 300,258 C305,252 325,245 350,252 C355,264 340,278 300,274 C260,278 245,264 250,252 Z" fill="url(#dark-hair-mo)"/>
+
+    <!-- Eyebrows (Strong, well-defined dark eyebrows) -->
+    <path d="M232,185 C250,178 270,180 282,188" stroke="url(#dark-hair-mo)" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+    <path d="M368,185 C350,178 330,180 318,188" stroke="url(#dark-hair-mo)" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+
+    <!-- Eyes (Warm, confident dark eyes) -->
+    <ellipse cx="258" cy="202" rx="11" ry="7" fill="#FFFFFF"/>
+    <circle cx="258" cy="202" r="5" fill="#1C2833"/>
+    <circle cx="256" cy="200" r="1.5" fill="#FFFFFF"/>
+
+    <ellipse cx="342" cy="202" rx="11" ry="7" fill="#FFFFFF"/>
+    <circle cx="342" cy="202" r="5" fill="#1C2833"/>
+    <circle cx="340" cy="200" r="1.5" fill="#FFFFFF"/>
+
+    <!-- Nose -->
+    <path d="M298,198 L302,242 C295,246 290,246 287,242" stroke="#A04000" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+    <!-- Smile (Lips) -->
+    <path d="M260,285 C280,300 320,300 340,285" fill="none" stroke="#A93226" stroke-width="3" stroke-linecap="round"/>
+    <path d="M265,285 C280,292 320,292 335,285 C320,302 280,302 265,285 Z" fill="#B03A2E"/>
+  </g>
+</svg>

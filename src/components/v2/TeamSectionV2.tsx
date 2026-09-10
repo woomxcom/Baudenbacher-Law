@@ -20,12 +20,14 @@ import {
 interface TeamSectionV2Props {
   language?: Language;
   onSelectMember: (member: TeamMember) => void;
+  onOpenMemberDetails: (memberId: string) => void;
   onViewAllTeam: () => void;
 }
 
 export const TeamSectionV2: React.FC<TeamSectionV2Props> = ({
   language = 'de',
   onSelectMember,
+  onOpenMemberDetails,
   onViewAllTeam
 }) => {
   const { team: teamMembers, ui } = getLocalizedData(language);
@@ -111,10 +113,11 @@ export const TeamSectionV2: React.FC<TeamSectionV2Props> = ({
                   </div>
                 </div>
 
-                {/* Portrait Frame */}
+                {/* Portrait Frame - LINKED TO QUICKVIEW POPUP */}
                 <div
                   onClick={() => onSelectMember(activeMember)}
                   className="relative aspect-[4/4.5] w-full max-w-xs mx-auto rounded-xl overflow-hidden border-2 border-[#C6A15B]/40 shadow-2xl cursor-pointer group mb-6"
+                  title={`${language === 'en' ? 'Quick View' : 'Schnellansicht'}: ${activeMember.name}`}
                 >
                   <img
                     src={activeMember.imageUrl}
@@ -123,10 +126,17 @@ export const TeamSectionV2: React.FC<TeamSectionV2Props> = ({
                     className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#213134]/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
-                    <span className="inline-flex items-center gap-2 text-xs text-white font-sans bg-[#213134]/80 px-3 py-1.5 rounded-full border border-[#C6A15B]/40">
-                      <span>{ui.team.fullProfile}</span>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onSelectMember(activeMember);
+                      }}
+                      className="inline-flex items-center gap-2 text-xs text-white font-sans bg-[#213134]/85 px-3 py-1.5 rounded-full border border-[#C6A15B]/40 hover:bg-[#C6A15B] hover:text-[#213134] transition-colors"
+                    >
+                      <span>{language === 'en' ? 'Quick View' : 'Schnellansicht'}</span>
                       <ExternalLink className="w-3.5 h-3.5 text-[#C6A15B]" />
-                    </span>
+                    </button>
                   </div>
                 </div>
 
@@ -150,10 +160,11 @@ export const TeamSectionV2: React.FC<TeamSectionV2Props> = ({
                   </div>
 
                   <button
-                    onClick={() => onSelectMember(activeMember)}
-                    className="inline-flex items-center gap-1.5 text-xs font-sans text-[#C6A15B] hover:text-white font-medium transition-colors"
+                    type="button"
+                    onClick={() => onOpenMemberDetails(activeMember.id)}
+                    className="inline-flex items-center gap-1.5 text-xs font-sans text-[#C6A15B] hover:text-white font-medium transition-colors cursor-pointer"
                   >
-                    <span>{ui.team.viewProfile}</span>
+                    <span>{ui.team.openProfile}</span>
                     <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -178,8 +189,11 @@ export const TeamSectionV2: React.FC<TeamSectionV2Props> = ({
                     </span>
                   </div>
 
-                  {/* Name & Title */}
-                  <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal text-[#213134] tracking-tight mb-2">
+                  {/* Name & Title - LINKED TO DETAILS PAGE */}
+                  <h3
+                    onClick={() => onOpenMemberDetails(activeMember.id)}
+                    className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal text-[#213134] hover:text-[#8a6828] cursor-pointer transition-colors tracking-tight mb-2"
+                  >
                     {activeMember.name}
                   </h3>
                   
@@ -240,10 +254,11 @@ export const TeamSectionV2: React.FC<TeamSectionV2Props> = ({
                     Baudenbacher Law AG · {activeMember.location}
                   </span>
                   <button
-                    onClick={() => onSelectMember(activeMember)}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#C6A15B] hover:bg-[#dec184] text-[#213134] font-sans font-semibold text-xs tracking-wider uppercase rounded-lg shadow-md transition-all ml-auto"
+                    type="button"
+                    onClick={() => onOpenMemberDetails(activeMember.id)}
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#C6A15B] hover:bg-[#dec184] text-[#213134] font-sans font-semibold text-xs tracking-wider uppercase rounded-lg shadow-md transition-all ml-auto cursor-pointer"
                   >
-                    <span>{ui.team.fullProfile}</span>
+                    <span>{ui.team.openProfile}</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -309,10 +324,11 @@ export const TeamSectionV2: React.FC<TeamSectionV2Props> = ({
                 className="group bg-white border border-[#E4D9CC]/80 hover:border-[#C6A15B] rounded-xl overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
-                  {/* Portrait Container */}
+                  {/* Portrait Container - LINKED TO QUICKVIEW POPUP */}
                   <div
                     className="relative aspect-[3/4] w-full overflow-hidden bg-[#213134]/10 cursor-pointer"
                     onClick={() => onSelectMember(member)}
+                    title={`${language === 'en' ? 'Quick View' : 'Schnellansicht'}: ${member.name}`}
                   >
                     <img
                       src={member.imageUrl}
@@ -321,25 +337,33 @@ export const TeamSectionV2: React.FC<TeamSectionV2Props> = ({
                       className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                     
-                    {/* Subtle Gradient & Hover Overlay */}
+                    {/* Subtle Gradient & Hover Overlay with Quickview button */}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#213134]/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4">
-                      <span className="text-xs text-white font-sans font-medium flex items-center gap-1.5">
-                        <span>{ui.team.fullProfile}</span>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onSelectMember(member);
+                        }}
+                        className="text-xs text-white font-sans font-medium flex items-center gap-1.5 bg-[#213134]/90 px-2.5 py-1 rounded border border-[#C6A15B]/40 hover:bg-[#C6A15B] hover:text-[#213134] transition-colors"
+                      >
+                        <span>{language === 'en' ? 'Quick View' : 'Schnellansicht'}</span>
                         <ExternalLink className="w-3.5 h-3.5 text-[#C6A15B]" />
-                      </span>
+                      </button>
                     </div>
 
                     {/* Location Tag */}
-                    <div className="absolute top-3 right-3 bg-[#213134]/90 backdrop-blur-xs text-[#E4D9CC] text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-md border border-[#C6A15B]/40 font-sans shadow-sm">
+                    <div className="absolute top-3 right-3 bg-[#213134]/90 backdrop-blur-xs text-[#E4D9CC] text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-md border border-[#C6A15B]/40 font-sans shadow-sm pointer-events-none">
                       {member.location}
                     </div>
                   </div>
 
                   {/* Content */}
                   <div className="p-5">
+                    {/* Title - LINKED TO DETAILS PAGE */}
                     <h3
-                      onClick={() => onSelectMember(member)}
-                      className="font-serif text-lg sm:text-xl font-normal text-[#213134] group-hover:text-[#8a6828] transition-colors leading-snug cursor-pointer mb-1.5"
+                      onClick={() => onOpenMemberDetails(member.id)}
+                      className="font-serif text-lg sm:text-xl font-normal text-[#213134] hover:text-[#8a6828] transition-colors leading-snug cursor-pointer mb-1.5"
                     >
                       {member.name}
                     </h3>
@@ -364,9 +388,11 @@ export const TeamSectionV2: React.FC<TeamSectionV2Props> = ({
 
                 {/* Card Footer Actions */}
                 <div className="p-5 pt-0 border-t border-[#F0EBE3] flex items-center justify-between mt-auto">
+                  {/* "Open Profile ->" - LINKED TO DETAILS PAGE */}
                   <button
-                    onClick={() => onSelectMember(member)}
-                    className="inline-flex items-center gap-1.5 text-xs font-sans text-[#8a6828] group-hover:text-[#213134] font-semibold transition-colors"
+                    type="button"
+                    onClick={() => onOpenMemberDetails(member.id)}
+                    className="inline-flex items-center gap-1.5 text-xs font-sans text-[#8a6828] hover:text-[#213134] font-semibold transition-colors cursor-pointer group"
                   >
                     <span>{ui.team.openProfile}</span>
                     <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />

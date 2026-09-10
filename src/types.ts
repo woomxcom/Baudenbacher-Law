@@ -1,6 +1,7 @@
 export type HomePageVersion = 'version1' | 'version2';
 export type HeroVersion = HomePageVersion;
 export type Language = 'de' | 'en';
+export type ActiveView = 'home' | 'team-member-template' | 'practice-area-template';
 
 export interface CitySlide {
   id: string;

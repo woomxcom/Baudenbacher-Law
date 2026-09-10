@@ -14,6 +14,7 @@ interface HomePageV2Props {
   language?: Language;
   onSelectVersion: (v: HomePageVersion) => void;
   onSelectMember: (m: TeamMember) => void;
+  onOpenMemberDetails: (memberId: string) => void;
   onSelectPractice: (p: PracticeArea) => void;
   onOpenContact: () => void;
   onSelectOffice: (city: string) => void;
@@ -27,6 +28,7 @@ export const HomePageV2: React.FC<HomePageV2Props> = ({
   language = 'de',
   onSelectVersion,
   onSelectMember,
+  onOpenMemberDetails,
   onSelectPractice,
   onOpenContact,
   onSelectOffice,
@@ -58,6 +60,7 @@ export const HomePageV2: React.FC<HomePageV2Props> = ({
         <TeamSectionV2
           language={language}
           onSelectMember={onSelectMember}
+          onOpenMemberDetails={onOpenMemberDetails}
           onViewAllTeam={handleViewAllTeam}
         />
 

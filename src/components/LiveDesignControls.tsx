@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { HomePageVersion, Language } from '../types';
-import { Sliders, Layers, Palette, ChevronUp, ChevronDown, Globe } from 'lucide-react';
+import { HomePageVersion, Language, ActiveView } from '../types';
+import { Sliders, Layers, Palette, ChevronUp, ChevronDown, Globe, User, BookOpen, Home } from 'lucide-react';
 import { UI_DE, UI_EN } from '../data/translations';
 
 interface LiveDesignControlsProps {
@@ -10,6 +10,8 @@ interface LiveDesignControlsProps {
   onSelectLanguage: (lang: Language) => void;
   goldTone: string;
   onSelectGoldTone: (tone: string) => void;
+  activeView: ActiveView;
+  onSelectActiveView: (view: ActiveView) => void;
   onOpenElementorGuide: () => void;
 }
 
@@ -20,10 +22,13 @@ export const LiveDesignControls: React.FC<LiveDesignControlsProps> = ({
   onSelectLanguage,
   goldTone,
   onSelectGoldTone,
+  activeView = 'home',
+  onSelectActiveView,
   onOpenElementorGuide
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const ui = language === 'en' ? UI_EN : UI_DE;
+  const isEn = language === 'en';
 
   const GOLD_TONES = [
     { name: 'Original Gold', hex: '#C6A15B' },
@@ -51,7 +56,7 @@ export const LiveDesignControls: React.FC<LiveDesignControlsProps> = ({
               {ui.controls.title}
             </span>
             <span className="text-[10px] bg-[#C6A15B]/20 text-[#C6A15B] px-2 py-0.5 rounded font-semibold uppercase">
-              {pageVersion === 'version1' ? 'V1' : 'V2'}
+              {activeView === 'home' ? (pageVersion === 'version1' ? 'V1 Home' : 'V2 Home') : (activeView === 'team-member-template' ? 'Profile' : 'Practice')}
             </span>
           </div>
 
@@ -97,8 +102,62 @@ export const LiveDesignControls: React.FC<LiveDesignControlsProps> = ({
 
         {/* Expanded Controls Panel */}
         {isExpanded && (
-          <div className="p-4 space-y-4 text-xs animate-fadeIn">
+          <div className="p-4 space-y-4 text-xs animate-fadeIn max-h-[75vh] overflow-y-auto">
             
+            {/* Template & Page View Selector */}
+            <div>
+              <div className="text-[11px] uppercase tracking-wider text-[#C6A15B] font-semibold mb-2 flex items-center gap-1.5">
+                <Layers className="w-3.5 h-3.5" />
+                <span>{isEn ? 'Page & Template View:' : 'Seiten- & Template-Ansicht:'}</span>
+              </div>
+              <div className="space-y-1.5">
+                <button
+                  onClick={() => onSelectActiveView('home')}
+                  className={`w-full py-2 px-3 rounded text-left transition-all flex items-center justify-between ${
+                    activeView === 'home'
+                      ? 'bg-[#C6A15B] text-[#213134] font-bold shadow-xs'
+                      : 'bg-[#213134] text-white/90 hover:bg-[#2d4246]'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <Home className="w-3.5 h-3.5" />
+                    <span>{isEn ? 'Homepage' : 'Startseite'}</span>
+                  </div>
+                  <span className="text-[10px] uppercase opacity-75">{pageVersion === 'version1' ? 'V1' : 'V2'}</span>
+                </button>
+
+                <button
+                  onClick={() => onSelectActiveView('team-member-template')}
+                  className={`w-full py-2 px-3 rounded text-left transition-all flex items-center justify-between ${
+                    activeView === 'team-member-template'
+                      ? 'bg-[#C6A15B] text-[#213134] font-bold shadow-xs'
+                      : 'bg-[#213134] text-white/90 hover:bg-[#2d4246]'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <User className="w-3.5 h-3.5" />
+                    <span className="truncate">Dr. Laura Baudenbacher (Profil)</span>
+                  </div>
+                  <span className="text-[10px] uppercase opacity-75">{isEn ? 'New' : 'Neu'}</span>
+                </button>
+
+                <button
+                  onClick={() => onSelectActiveView('practice-area-template')}
+                  className={`w-full py-2 px-3 rounded text-left transition-all flex items-center justify-between ${
+                    activeView === 'practice-area-template'
+                      ? 'bg-[#C6A15B] text-[#213134] font-bold shadow-xs'
+                      : 'bg-[#213134] text-white/90 hover:bg-[#2d4246]'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <BookOpen className="w-3.5 h-3.5" />
+                    <span className="truncate">Europarecht Anwalt (Fachgebiet)</span>
+                  </div>
+                  <span className="text-[10px] uppercase opacity-75">{isEn ? 'New' : 'Neu'}</span>
+                </button>
+              </div>
+            </div>
+
             {/* Language Switcher in Panel */}
             <div>
               <div className="text-[11px] uppercase tracking-wider text-[#C6A15B] font-semibold mb-2 flex items-center gap-1.5">
@@ -131,7 +190,7 @@ export const LiveDesignControls: React.FC<LiveDesignControlsProps> = ({
               </div>
             </div>
 
-            {/* Full Homepage Version Switcher */}
+            {/* Homepage Version Switcher (V1 / V2) */}
             <div>
               <div className="text-[11px] uppercase tracking-wider text-[#C6A15B] font-semibold mb-2 flex items-center gap-1.5">
                 <Layers className="w-3.5 h-3.5" />
@@ -139,9 +198,12 @@ export const LiveDesignControls: React.FC<LiveDesignControlsProps> = ({
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <button
-                  onClick={() => onSelectPageVersion('version1')}
+                  onClick={() => {
+                    onSelectPageVersion('version1');
+                    onSelectActiveView('home');
+                  }}
                   className={`py-2.5 px-3 rounded text-center transition-all flex flex-col items-center justify-center gap-0.5 ${
-                    pageVersion === 'version1'
+                    pageVersion === 'version1' && activeView === 'home'
                       ? 'bg-[#C6A15B] text-[#213134] font-bold shadow-sm'
                       : 'bg-[#213134] text-white/80 hover:bg-[#2d4246]'
                   }`}
@@ -150,9 +212,12 @@ export const LiveDesignControls: React.FC<LiveDesignControlsProps> = ({
                   <span className="text-[10px] opacity-80">{ui.controls.v1Desc}</span>
                 </button>
                 <button
-                  onClick={() => onSelectPageVersion('version2')}
+                  onClick={() => {
+                    onSelectPageVersion('version2');
+                    onSelectActiveView('home');
+                  }}
                   className={`py-2.5 px-3 rounded text-center transition-all flex flex-col items-center justify-center gap-0.5 ${
-                    pageVersion === 'version2'
+                    pageVersion === 'version2' && activeView === 'home'
                       ? 'bg-[#C6A15B] text-[#213134] font-bold shadow-sm'
                       : 'bg-[#213134] text-white/80 hover:bg-[#2d4246]'
                   }`}

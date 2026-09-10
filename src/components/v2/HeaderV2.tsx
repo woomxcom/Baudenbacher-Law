@@ -8,13 +8,15 @@ interface HeaderV2Props {
   onSelectVersion: (v: HomePageVersion) => void;
   onOpenContact: () => void;
   onOpenElementorGuide: () => void;
+  onBackToHome?: () => void;
 }
 
 export const HeaderV2: React.FC<HeaderV2Props> = ({
   pageVersion,
   onSelectVersion,
   onOpenContact,
-  onOpenElementorGuide
+  onOpenElementorGuide,
+  onBackToHome
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -99,7 +101,10 @@ export const HeaderV2: React.FC<HeaderV2Props> = ({
             <Logo
               variant="light"
               size="md"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              onClick={() => {
+                if (onBackToHome) onBackToHome();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
             />
           </div>
 

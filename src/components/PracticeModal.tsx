@@ -8,13 +8,15 @@ interface PracticeModalProps {
   language?: Language;
   onClose: () => void;
   onOpenContact: () => void;
+  onOpenFullPractice?: (practiceId: string) => void;
 }
 
 export const PracticeModal: React.FC<PracticeModalProps> = ({
   practice,
   language = 'de',
   onClose,
-  onOpenContact
+  onOpenContact,
+  onOpenFullPractice
 }) => {
   if (!practice) return null;
 
@@ -110,16 +112,31 @@ export const PracticeModal: React.FC<PracticeModalProps> = ({
               </div>
             </div>
 
-            <button
-              onClick={() => {
-                onClose();
-                onOpenContact();
-              }}
-              className="px-6 py-3 bg-[#C6A15B] hover:bg-[#dec184] text-[#213134] font-sans font-semibold text-xs tracking-wider uppercase transition-colors inline-flex items-center gap-2"
-            >
-              <span>{ui.modals.requestMandate}</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+              {onOpenFullPractice && (
+                <button
+                  onClick={() => {
+                    onClose();
+                    onOpenFullPractice(activePractice.id);
+                  }}
+                  className="px-4 py-3 bg-[#182426] hover:bg-[#2c4044] text-[#C6A15B] border border-[#C6A15B]/40 font-sans font-medium text-xs tracking-wider uppercase transition-colors inline-flex items-center justify-center gap-1.5"
+                >
+                  <span>{language === 'en' ? 'Open Subpage Template' : 'Unterseiten-Template öffnen'}</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              )}
+
+              <button
+                onClick={() => {
+                  onClose();
+                  onOpenContact();
+                }}
+                className="px-6 py-3 bg-[#C6A15B] hover:bg-[#dec184] text-[#213134] font-sans font-semibold text-xs tracking-wider uppercase transition-colors inline-flex items-center justify-center gap-2"
+              >
+                <span>{ui.modals.requestMandate}</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
 
         </div>

@@ -1,20 +1,22 @@
 import React from 'react';
 import { TeamMember, Language } from '../types';
 import { getLocalizedData } from '../data/translations';
-import { X, Mail, Phone, MapPin, Award, BookOpen, Globe2, CheckCircle2 } from 'lucide-react';
+import { X, Mail, Phone, MapPin, Award, BookOpen, Globe2, CheckCircle2, ArrowRight } from 'lucide-react';
 
 interface TeamModalProps {
   member: TeamMember | null;
   language?: Language;
   onClose: () => void;
   onOpenContact: () => void;
+  onOpenFullProfile?: (memberId: string) => void;
 }
 
 export const TeamModal: React.FC<TeamModalProps> = ({
   member,
   language = 'de',
   onClose,
-  onOpenContact
+  onOpenContact,
+  onOpenFullProfile
 }) => {
   if (!member) return null;
 
@@ -83,15 +85,30 @@ export const TeamModal: React.FC<TeamModalProps> = ({
               </div>
             </div>
 
-            <button
-              onClick={() => {
-                onClose();
-                onOpenContact();
-              }}
-              className="mt-6 w-full py-2.5 bg-[#C6A15B] hover:bg-[#dec184] text-[#213134] font-sans font-semibold text-xs tracking-wider uppercase transition-colors rounded-none"
-            >
-              {ui.modals.directContact}
-            </button>
+            <div className="mt-6 space-y-2">
+              <button
+                onClick={() => {
+                  onClose();
+                  onOpenContact();
+                }}
+                className="w-full py-2.5 bg-[#C6A15B] hover:bg-[#dec184] text-[#213134] font-sans font-semibold text-xs tracking-wider uppercase transition-colors rounded-none"
+              >
+                {ui.modals.directContact}
+              </button>
+
+              {onOpenFullProfile && (
+                <button
+                  onClick={() => {
+                    onClose();
+                    onOpenFullProfile(activeLocalizedMember.id);
+                  }}
+                  className="w-full py-2 bg-[#182426] hover:bg-[#2c4044] text-[#C6A15B] border border-[#C6A15B]/40 font-sans font-medium text-xs tracking-wider uppercase transition-colors flex items-center justify-center gap-1.5"
+                >
+                  <span>{language === 'en' ? 'Open Full Profile Page (Template)' : 'Vollständiges Profil-Template öffnen'}</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Right Column: Bio, Specializations, Education */}

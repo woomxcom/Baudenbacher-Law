@@ -16,7 +16,8 @@ export const TeamSectionV1: React.FC<TeamSectionV1Props> = ({
   onOpenMemberDetails,
   onViewAllTeam
 }) => {
-  const { team: teamMembers, ui } = getLocalizedData(language);
+  const { team: allTeamMembers, ui } = getLocalizedData(language);
+  const teamMembers = allTeamMembers.slice(0, 4);
 
   return (
     <section
@@ -54,15 +55,15 @@ export const TeamSectionV1: React.FC<TeamSectionV1Props> = ({
                   className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                 />
                 
-                {/* Subtle overlay on hover with Quickview button */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#213134]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                {/* Subtle overlay on hover with Quickview button - visible on mobile for tap accessibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#213134]/80 via-transparent to-transparent opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 sm:p-4">
                   <button
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
                       onSelectMember(member);
                     }}
-                    className="inline-flex items-center gap-1.5 text-xs font-sans text-white font-medium bg-[#213134]/90 px-3 py-1.5 border border-[#C6A15B]/50 hover:bg-[#C6A15B] hover:text-[#213134] transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-sans text-white font-medium bg-[#213134]/90 px-3 py-1.5 border border-[#C6A15B]/50 hover:bg-[#C6A15B] hover:text-[#213134] transition-colors min-h-[36px]"
                   >
                     <span>{language === 'en' ? 'Quick View' : 'Schnellansicht'}</span>
                     <ExternalLink className="w-3 h-3 text-[#C6A15B]" />

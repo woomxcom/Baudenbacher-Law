@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { Language, HomePageVersion } from '../../types';
+import { Language } from '../../types';
 import { getLocalizedData } from '../../data/translations';
 import { HeaderV1 } from '../v1/HeaderV1';
-import { HeaderV2 } from '../v2/HeaderV2';
 import { FooterV1 } from '../v1/FooterV1';
-import { FooterV2 } from '../v2/FooterV2';
 import { 
   Mail, 
   Phone, 
@@ -30,25 +28,29 @@ import {
 
 interface TeamMemberProfilePageProps {
   language: Language;
-  pageVersion: HomePageVersion;
   selectedMemberId?: string;
-  onSelectVersion: (v: HomePageVersion) => void;
   onBackToHome: () => void;
+  onBackToOverview?: () => void;
   onOpenContact: (officeCity?: string) => void;
   onNavigateToPractice: (practiceId: string) => void;
   onSelectOtherMember?: (memberId: string) => void;
+  onNavigateToTeamOverview?: () => void;
+  onNavigateToPracticesOverview?: () => void;
+  onNavigateToContactPage?: () => void;
   onOpenElementorGuide: () => void;
 }
 
 export const TeamMemberProfilePage: React.FC<TeamMemberProfilePageProps> = ({
   language = 'de',
-  pageVersion = 'version1',
   selectedMemberId = 'laura-baudenbacher',
-  onSelectVersion,
   onBackToHome,
+  onBackToOverview,
   onOpenContact,
   onNavigateToPractice,
   onSelectOtherMember,
+  onNavigateToTeamOverview,
+  onNavigateToPracticesOverview,
+  onNavigateToContactPage,
   onOpenElementorGuide
 }) => {
   const { team, ui } = getLocalizedData(language);
@@ -139,25 +141,16 @@ export const TeamMemberProfilePage: React.FC<TeamMemberProfilePageProps> = ({
   return (
     <div className="min-h-screen bg-[#F8F6F2] text-[#213134] flex flex-col selection:bg-[#C6A15B]/30 selection:text-[#213134]">
       
-      {/* Dynamic Header according to selected layout version */}
-      {pageVersion === 'version1' ? (
-        <HeaderV1
-          pageVersion={pageVersion}
-          language={language}
-          onSelectVersion={onSelectVersion}
-          onOpenContact={() => onOpenContact()}
-          onOpenElementorGuide={onOpenElementorGuide}
-          onBackToHome={onBackToHome}
-        />
-      ) : (
-        <HeaderV2
-          pageVersion={pageVersion}
-          onSelectVersion={onSelectVersion}
-          onOpenContact={() => onOpenContact()}
-          onOpenElementorGuide={onOpenElementorGuide}
-          onBackToHome={onBackToHome}
-        />
-      )}
+      {/* Header V1 */}
+      <HeaderV1
+        language={language}
+        onOpenContact={onNavigateToContactPage || (() => onOpenContact())}
+        onOpenElementorGuide={onOpenElementorGuide}
+        onBackToHome={onBackToHome}
+        onNavigateToTeamOverview={onNavigateToTeamOverview || onBackToOverview}
+        onNavigateToPracticesOverview={onNavigateToPracticesOverview}
+        onNavigateToContactPage={onNavigateToContactPage || (() => onOpenContact())}
+      />
 
       {/* Main Profile Page Body */}
       <main className="flex-1 pb-20">
@@ -166,14 +159,46 @@ export const TeamMemberProfilePage: React.FC<TeamMemberProfilePageProps> = ({
         <section className="bg-[#213134] text-white border-b border-[#31464a] pt-24 sm:pt-28 pb-12 md:pb-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Direct Back to Home / Team navigation */}
-            <div className="mb-6">
+            <div className="mb-6 flex flex-wrap items-center gap-3">
+              {(onBackToOverview || onNavigateToTeamOverview) && (
+                <button
+                  type="button"
+                  onClick={onBackToOverview || onNavigateToTeamOverview}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#283d41] hover:bg-[#344d52] border border-[#445b60] text-xs font-sans tracking-wider uppercase text-[#C6A15B] hover:text-white transition-colors cursor-pointer group"
+                >
+                  <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+                  <span>{isEn ? 'Entire Team Overview' : 'Gesamtes Team'}</span>
+                </button>
+              )}
+
+              {onNavigateToPracticesOverview && (
+                <button
+                  type="button"
+                  onClick={onNavigateToPracticesOverview}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#283d41] hover:bg-[#344d52] border border-[#445b60] text-xs font-sans tracking-wider uppercase text-[#E4D9CC] hover:text-white transition-colors cursor-pointer"
+                >
+                  <Briefcase className="w-3.5 h-3.5 text-[#C6A15B]" />
+                  <span>{isEn ? 'Practice Areas' : 'Fachgebiete'}</span>
+                </button>
+              )}
+
+              {onNavigateToContactPage && (
+                <button
+                  type="button"
+                  onClick={onNavigateToContactPage}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#283d41] hover:bg-[#344d52] border border-[#445b60] text-xs font-sans tracking-wider uppercase text-[#E4D9CC] hover:text-white transition-colors cursor-pointer"
+                >
+                  <Building2 className="w-3.5 h-3.5 text-[#C6A15B]" />
+                  <span>{isEn ? 'Contact' : 'Kontakt'}</span>
+                </button>
+              )}
+
               <button
                 type="button"
                 onClick={onBackToHome}
-                className="inline-flex items-center gap-1.5 text-xs font-sans tracking-wider uppercase text-[#C6A15B] hover:text-white transition-colors cursor-pointer group"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-transparent hover:bg-white/5 border border-white/15 text-xs font-sans tracking-wider uppercase text-[#E4D9CC]/75 hover:text-white transition-colors cursor-pointer"
               >
-                <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
-                <span>{isEn ? 'Back to Overview' : 'Zurück zur Übersicht'}</span>
+                <span>{isEn ? 'Home' : 'Startseite'}</span>
               </button>
             </div>
 
@@ -234,12 +259,12 @@ export const TeamMemberProfilePage: React.FC<TeamMemberProfilePageProps> = ({
                 </p>
 
                 {/* Action Bar (White & Case style: Contact, vCard, Print, Share) */}
-                <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-[#31464a]">
+                <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-4 border-t border-[#31464a]">
                   
                   {/* Primary Mandate Button */}
                   <button
                     onClick={() => onOpenContact('Zürich')}
-                    className="px-5 py-3 bg-[#C6A15B] hover:bg-[#dec184] text-[#213134] font-sans font-semibold text-xs tracking-wider uppercase transition-colors inline-flex items-center gap-2 shadow-sm"
+                    className="w-full sm:w-auto justify-center px-5 py-3 bg-[#C6A15B] hover:bg-[#dec184] text-[#213134] font-sans font-semibold text-xs tracking-wider uppercase transition-colors inline-flex items-center gap-2 shadow-sm min-h-[44px]"
                   >
                     <span>{isEn ? 'Request Consultation' : 'Mandat anfragen'}</span>
                     <ArrowRight className="w-4 h-4" />
@@ -248,55 +273,58 @@ export const TeamMemberProfilePage: React.FC<TeamMemberProfilePageProps> = ({
                   {/* Direct Email */}
                   <a
                     href={`mailto:${member.email}`}
-                    className="px-4 py-3 bg-[#182426] hover:bg-[#283c40] text-white border border-[#395055] font-sans text-xs tracking-wider uppercase transition-colors inline-flex items-center gap-2"
+                    className="w-full sm:w-auto justify-center px-4 py-3 bg-[#182426] hover:bg-[#283c40] text-white border border-[#395055] font-sans text-xs tracking-wider uppercase transition-colors inline-flex items-center gap-2 min-h-[44px]"
                   >
-                    <Mail className="w-4 h-4 text-[#C6A15B]" />
-                    <span>{member.email}</span>
+                    <Mail className="w-4 h-4 text-[#C6A15B] shrink-0" />
+                    <span className="truncate">{member.email}</span>
                   </a>
 
                   {/* Direct Phone */}
                   <a
                     href={`tel:${member.phone.replace(/\s+/g, '')}`}
-                    className="px-4 py-3 bg-[#182426] hover:bg-[#283c40] text-white border border-[#395055] font-sans text-xs tracking-wider uppercase transition-colors inline-flex items-center gap-2"
+                    className="w-full sm:w-auto justify-center px-4 py-3 bg-[#182426] hover:bg-[#283c40] text-white border border-[#395055] font-sans text-xs tracking-wider uppercase transition-colors inline-flex items-center gap-2 min-h-[44px]"
                   >
-                    <Phone className="w-4 h-4 text-[#C6A15B]" />
+                    <Phone className="w-4 h-4 text-[#C6A15B] shrink-0" />
                     <span>{member.phone}</span>
                   </a>
 
-                  {/* vCard Download */}
-                  <button
-                    onClick={downloadVCard}
-                    className="p-3 bg-[#182426] hover:bg-[#283c40] text-[#E4D9CC] hover:text-white border border-[#395055] transition-colors"
-                    title={isEn ? 'Download vCard' : 'Visitenkarte herunterladen (vCard)'}
-                    aria-label="Download vCard"
-                  >
-                    <Download className="w-4 h-4 text-[#C6A15B]" />
-                  </button>
+                  {/* Utility icon buttons */}
+                  <div className="flex items-center gap-2 w-full sm:w-auto justify-end sm:justify-start pt-1 sm:pt-0">
+                    {/* vCard Download */}
+                    <button
+                      onClick={downloadVCard}
+                      className="p-3 bg-[#182426] hover:bg-[#283c40] text-[#E4D9CC] hover:text-white border border-[#395055] transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+                      title={isEn ? 'Download vCard' : 'Visitenkarte herunterladen (vCard)'}
+                      aria-label="Download vCard"
+                    >
+                      <Download className="w-4 h-4 text-[#C6A15B]" />
+                    </button>
 
-                  {/* Print */}
-                  <button
-                    onClick={handlePrint}
-                    className="p-3 bg-[#182426] hover:bg-[#283c40] text-[#E4D9CC] hover:text-white border border-[#395055] transition-colors"
-                    title={isEn ? 'Print profile' : 'Profil drucken'}
-                    aria-label="Print profile"
-                  >
-                    <Printer className="w-4 h-4 text-[#C6A15B]" />
-                  </button>
+                    {/* Print */}
+                    <button
+                      onClick={handlePrint}
+                      className="p-3 bg-[#182426] hover:bg-[#283c40] text-[#E4D9CC] hover:text-white border border-[#395055] transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+                      title={isEn ? 'Print profile' : 'Profil drucken'}
+                      aria-label="Print profile"
+                    >
+                      <Printer className="w-4 h-4 text-[#C6A15B]" />
+                    </button>
 
-                  {/* Share / Copy link */}
-                  <button
-                    onClick={handleShare}
-                    className="p-3 bg-[#182426] hover:bg-[#283c40] text-[#E4D9CC] hover:text-white border border-[#395055] transition-colors relative"
-                    title={isEn ? 'Copy profile link' : 'Link kopieren'}
-                    aria-label="Copy profile link"
-                  >
-                    <Share2 className="w-4 h-4 text-[#C6A15B]" />
-                    {copiedLink && (
-                      <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-[#C6A15B] text-[#213134] text-[10px] font-bold px-2 py-0.5 rounded whitespace-nowrap shadow">
-                        {isEn ? 'Link copied!' : 'Kopiert!'}
-                      </span>
-                    )}
-                  </button>
+                    {/* Share / Copy link */}
+                    <button
+                      onClick={handleShare}
+                      className="p-3 bg-[#182426] hover:bg-[#283c40] text-[#E4D9CC] hover:text-white border border-[#395055] transition-colors relative min-h-[44px] min-w-[44px] flex items-center justify-center"
+                      title={isEn ? 'Copy profile link' : 'Link kopieren'}
+                      aria-label="Copy profile link"
+                    >
+                      <Share2 className="w-4 h-4 text-[#C6A15B]" />
+                      {copiedLink && (
+                        <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-[#C6A15B] text-[#213134] text-[10px] font-bold px-2 py-0.5 rounded whitespace-nowrap shadow">
+                          {isEn ? 'Link copied!' : 'Kopiert!'}
+                        </span>
+                      )}
+                    </button>
+                  </div>
 
                 </div>
 
@@ -855,18 +883,11 @@ export const TeamMemberProfilePage: React.FC<TeamMemberProfilePageProps> = ({
 
       </main>
 
-      {/* Footer matching selected version */}
-      {pageVersion === 'version1' ? (
-        <FooterV1
-          language={language}
-          onOpenContact={() => onOpenContact()}
-        />
-      ) : (
-        <FooterV2
-          language={language}
-          onOpenContact={() => onOpenContact()}
-        />
-      )}
+      {/* Footer V1 */}
+      <FooterV1
+        language={language}
+        onOpenContact={() => onOpenContact()}
+      />
 
     </div>
   );

@@ -7,12 +7,10 @@ import { PracticeAreasSectionV1 } from './PracticeAreasSectionV1';
 import { MorePracticesBannerV1 } from './MorePracticesBannerV1';
 import { OfficesSectionV1 } from './OfficesSectionV1';
 import { FooterV1 } from './FooterV1';
-import { HomePageVersion, TeamMember, PracticeArea, Language } from '../../types';
+import { TeamMember, PracticeArea, Language } from '../../types';
 
 interface HomePageV1Props {
-  pageVersion: HomePageVersion;
   language?: Language;
-  onSelectVersion: (v: HomePageVersion) => void;
   onSelectMember: (m: TeamMember) => void;
   onOpenMemberDetails: (memberId: string) => void;
   onSelectPractice: (p: PracticeArea) => void;
@@ -21,12 +19,13 @@ interface HomePageV1Props {
   onOpenValuesDetail: () => void;
   onExploreAllPractices: () => void;
   onOpenElementorGuide: () => void;
+  onViewAllTeam?: () => void;
+  onNavigateToPracticesOverview?: () => void;
+  onNavigateToContactPage?: () => void;
 }
 
 export const HomePageV1: React.FC<HomePageV1Props> = ({
-  pageVersion,
   language = 'de',
-  onSelectVersion,
   onSelectMember,
   onOpenMemberDetails,
   onSelectPractice,
@@ -34,22 +33,30 @@ export const HomePageV1: React.FC<HomePageV1Props> = ({
   onSelectOffice,
   onOpenValuesDetail,
   onExploreAllPractices,
-  onOpenElementorGuide
+  onOpenElementorGuide,
+  onViewAllTeam,
+  onNavigateToPracticesOverview,
+  onNavigateToContactPage
 }) => {
   const handleViewAllTeam = () => {
-    const el = document.getElementById('team-section-v1');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (onViewAllTeam) {
+      onViewAllTeam();
+    } else {
+      const el = document.getElementById('team-section-v1');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
     <div id="homepage-v1" className="min-h-screen flex flex-col bg-[#213134] text-[#213134]">
       {/* 1. Header V1 */}
       <HeaderV1
-        pageVersion={pageVersion}
         language={language}
-        onSelectVersion={onSelectVersion}
-        onOpenContact={onOpenContact}
+        onOpenContact={onNavigateToContactPage || onOpenContact}
         onOpenElementorGuide={onOpenElementorGuide}
+        onNavigateToTeamOverview={onViewAllTeam}
+        onNavigateToPracticesOverview={onNavigateToPracticesOverview || onExploreAllPractices}
+        onNavigateToContactPage={onNavigateToContactPage || onOpenContact}
       />
 
       <main className="flex-grow">
@@ -82,7 +89,14 @@ export const HomePageV1: React.FC<HomePageV1Props> = ({
       </main>
 
       {/* 8. Footer V1 */}
-      <FooterV1 language={language} onOpenContact={onOpenContact} />
+      <FooterV1
+        language={language}
+        onOpenContact={onNavigateToContactPage || onOpenContact}
+        onBackToHome={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        onNavigateToTeamOverview={onViewAllTeam}
+        onNavigateToPracticesOverview={onNavigateToPracticesOverview || onExploreAllPractices}
+        onNavigateToContactPage={onNavigateToContactPage || onOpenContact}
+      />
     </div>
   );
 };

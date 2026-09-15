@@ -156,6 +156,10 @@ export interface UiTranslations {
   };
   controls: {
     title: string;
+    deviceTitle?: string;
+    desktop?: string;
+    tablet?: string;
+    mobile?: string;
     layoutTitle: string;
     v1Title: string;
     v1Desc: string;
@@ -336,6 +340,100 @@ export const TEAM_MEMBERS_DE: TeamMember[] = [
     languages: ['Deutsch', 'Französisch', 'Englisch', 'Arabisch'],
     email: 'mohamed.hasnaoui@baudenbacher.law',
     phone: '+41 44 260 88 00'
+  },
+  {
+    id: 'sophie-von-arx',
+    name: 'MLaw Sophie V. von Arx',
+    title: 'Master of Law (MLaw), Substitutin',
+    role: 'Anwaltssubstitutin / Trainee Lawyer',
+    location: 'Zürich',
+    category: 'substitute',
+    imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=85',
+    bio: 'MLaw Sophie V. von Arx unterstützt das Team in wirtschaftsrechtlichen Fragestellungen, bei gesellschaftsrechtlichen Umstrukturierungen sowie im Sanktions- und Vollstreckungsrecht.',
+    specializations: [
+      'Wirtschafts- und Gesellschaftsrecht',
+      'Sanktionsrecht & Compliance',
+      'Vertragsgestaltung',
+      'Zivilprozessrecht'
+    ],
+    education: [
+      'Master of Law (MLaw), Universität St. Gallen (HSG)',
+      'Bachelor of Law (BLaw), Universität St. Gallen (HSG)'
+    ],
+    languages: ['Deutsch', 'Englisch', 'Französisch'],
+    email: 'sophie.vonarx@baudenbacher.law',
+    phone: '+41 44 260 88 00'
+  },
+  {
+    id: 'julian-keller',
+    name: 'MLaw Julian A. Keller',
+    title: 'Master of Law (MLaw), Substitut',
+    role: 'Anwaltssubstitut / Trainee Lawyer',
+    location: 'Zürich',
+    category: 'substitute',
+    imageUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=85',
+    bio: 'MLaw Julian A. Keller ist schwerpunktmässig in den Bereichen Europarecht, öffentliches Wirtschaftsrecht und regulatorische Verfahren vor schweizerischen und europäischen Stellen tätig.',
+    specializations: [
+      'Europarecht & EWR-Recht',
+      'Öffentliches Wirtschaftsrecht',
+      'Regulatorische Streitigkeiten',
+      'Kartellrecht'
+    ],
+    education: [
+      'Master of Law (MLaw), Universität Zürich (UZH)',
+      'Bachelor of Law (BLaw), Universität Zürich (UZH)'
+    ],
+    languages: ['Deutsch', 'Englisch', 'Italienisch'],
+    email: 'julian.keller@baudenbacher.law',
+    phone: '+41 44 260 88 00'
+  },
+  {
+    id: 'elena-rossi',
+    name: 'MLaw Elena Rossi',
+    title: 'Master of Law (MLaw), LL.M., Substitutin',
+    role: 'Anwaltssubstitutin / Trainee Lawyer',
+    location: 'Zürich & Brüssel',
+    category: 'substitute',
+    imageUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=85',
+    bio: 'MLaw Elena Rossi berät in grenzüberschreitenden Verfahren im Bereich Kartell-, Beihilfen- und Binnenmarktrecht mit besonderem Fokus auf die Schnittstelle zwischen der Schweiz und der Europäischen Union.',
+    specializations: [
+      'EU-Wettbewerbsrecht',
+      'Binnenmarktrecht & Grundfreiheiten',
+      'Internationale Streitbeilegung',
+      'Regulierung'
+    ],
+    education: [
+      'Master of European Law (LL.M.), College of Europe (Bruges)',
+      'Master of Law (MLaw), Universität Bern',
+      'Bachelor of Law (BLaw), Universität Genf'
+    ],
+    languages: ['Deutsch', 'Französisch', 'Englisch', 'Italienisch'],
+    email: 'elena.rossi@baudenbacher.law',
+    phone: '+41 44 260 88 00'
+  },
+  {
+    id: 'lukas-widmer',
+    name: 'MLaw Lukas C. Widmer',
+    title: 'Master of Law (MLaw), Substitut',
+    role: 'Anwaltssubstitut / Trainee Lawyer',
+    location: 'Zürich',
+    category: 'substitute',
+    imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=85',
+    bio: 'MLaw Lukas C. Widmer unterstützt Mandanten bei komplexen zivilprozessualen Streitigkeiten, nationalen und internationalen Schiedsverfahren sowie gesellschaftsrechtlichen Gutachten.',
+    specializations: [
+      'Internationale Schiedsgerichtsbarkeit',
+      'Zivilprozessrecht & Vollstreckung',
+      'Handelsrecht',
+      'Vertragsrecht'
+    ],
+    education: [
+      'Master of Law (MLaw), Universität Basel',
+      'LL.M. in Transnational Law, King\'s College London',
+      'Bachelor of Law (BLaw), Universität Basel'
+    ],
+    languages: ['Deutsch', 'Englisch', 'Französisch'],
+    email: 'lukas.widmer@baudenbacher.law',
+    phone: '+41 44 260 88 00'
   }
 ];
 
@@ -433,6 +531,100 @@ export const TEAM_MEMBERS_EN: TeamMember[] = [
     ],
     languages: ['German', 'French', 'English', 'Arabic'],
     email: 'mohamed.hasnaoui@baudenbacher.law',
+    phone: '+41 44 260 88 00'
+  },
+  {
+    id: 'sophie-von-arx',
+    name: 'MLaw Sophie V. von Arx',
+    title: 'Master of Law (MLaw), Trainee Lawyer',
+    role: 'Trainee Lawyer / Junior Associate',
+    location: 'Zurich',
+    category: 'substitute',
+    imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=85',
+    bio: 'MLaw Sophie V. von Arx supports the firm in commercial matters, corporate restructurings, as well as sanctions and enforcement procedures.',
+    specializations: [
+      'Commercial & Corporate Law',
+      'Sanctions Law & Compliance',
+      'Contract Drafting',
+      'Civil Litigation'
+    ],
+    education: [
+      'Master of Law (MLaw), University of St. Gallen (HSG)',
+      'Bachelor of Law (BLaw), University of St. Gallen (HSG)'
+    ],
+    languages: ['German', 'English', 'French'],
+    email: 'sophie.vonarx@baudenbacher.law',
+    phone: '+41 44 260 88 00'
+  },
+  {
+    id: 'julian-keller',
+    name: 'MLaw Julian A. Keller',
+    title: 'Master of Law (MLaw), Trainee Lawyer',
+    role: 'Trainee Lawyer / Junior Associate',
+    location: 'Zurich',
+    category: 'substitute',
+    imageUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=85',
+    bio: 'MLaw Julian A. Keller focuses on European law, public economic law, and regulatory proceedings before Swiss and European authorities.',
+    specializations: [
+      'European Law & EEA Law',
+      'Public Economic Law',
+      'Regulatory Disputes',
+      'Competition Law'
+    ],
+    education: [
+      'Master of Law (MLaw), University of Zurich (UZH)',
+      'Bachelor of Law (BLaw), University of Zurich (UZH)'
+    ],
+    languages: ['German', 'English', 'Italian'],
+    email: 'julian.keller@baudenbacher.law',
+    phone: '+41 44 260 88 00'
+  },
+  {
+    id: 'elena-rossi',
+    name: 'MLaw Elena Rossi',
+    title: 'Master of Law (MLaw), LL.M., Trainee Lawyer',
+    role: 'Trainee Lawyer / Junior Associate',
+    location: 'Zurich & Brussels',
+    category: 'substitute',
+    imageUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=85',
+    bio: 'MLaw Elena Rossi assists in cross-border competition, state aid, and internal market matters, focusing on the interface between Switzerland and the European Union.',
+    specializations: [
+      'EU Competition Law',
+      'Internal Market Law & Fundamental Freedoms',
+      'Cross-Border Dispute Resolution',
+      'Regulation'
+    ],
+    education: [
+      'Master of European Law (LL.M.), College of Europe (Bruges)',
+      'Master of Law (MLaw), University of Bern',
+      'Bachelor of Law (BLaw), University of Geneva'
+    ],
+    languages: ['German', 'French', 'English', 'Italian'],
+    email: 'elena.rossi@baudenbacher.law',
+    phone: '+41 44 260 88 00'
+  },
+  {
+    id: 'lukas-widmer',
+    name: 'MLaw Lukas C. Widmer',
+    title: 'Master of Law (MLaw), Trainee Lawyer',
+    role: 'Trainee Lawyer / Junior Associate',
+    location: 'Zurich',
+    category: 'substitute',
+    imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=85',
+    bio: 'MLaw Lukas C. Widmer assists clients in complex civil litigation, domestic and international arbitration, and corporate law assessments.',
+    specializations: [
+      'International Arbitration',
+      'Civil Procedure & Enforcement',
+      'Commercial Law',
+      'Contract Law'
+    ],
+    education: [
+      'Master of Law (MLaw), University of Basel',
+      'LL.M. in Transnational Law, King\'s College London',
+      'Bachelor of Law (BLaw), University of Basel'
+    ],
+    languages: ['German', 'English', 'French'],
+    email: 'lukas.widmer@baudenbacher.law',
     phone: '+41 44 260 88 00'
   }
 ];
@@ -720,7 +912,7 @@ export const UI_DE: UiTranslations = {
     eyebrow: 'JURISTISCHE EXPERTISE',
     title: 'Unser Team',
     subtitle: 'Führende Praxis- und Gerichtserfahrung in der Schweiz, der Europäischen Union und im EWR-Raum.',
-    viewAll: 'Gesamtes Team ansehen',
+    viewAll: 'Lernen Sie unser gesamtes Team kennen',
     openProfile: 'Profil öffnen',
     viewProfile: 'Profil ansehen',
     fullProfile: 'Vollständiges Profil',
@@ -844,6 +1036,10 @@ export const UI_DE: UiTranslations = {
   },
   controls: {
     title: 'Design & Layout Switcher',
+    deviceTitle: 'Responsive Vorschau / Device Mode:',
+    desktop: 'Desktop (100%)',
+    tablet: 'Tablet (768px)',
+    mobile: 'Mobile (390px)',
     layoutTitle: 'Gesamtes Homepage-Layout:',
     v1Title: 'V1: PDF Replikation',
     v1Desc: 'Klassisch & Clean',
@@ -884,7 +1080,7 @@ export const UI_EN: UiTranslations = {
     eyebrow: 'LEGAL EXPERTISE',
     title: 'Our Team',
     subtitle: 'Decades of top-tier judicial and governmental experience across Switzerland, the European Union, and the EEA.',
-    viewAll: 'View Entire Team',
+    viewAll: 'Meet our entire team',
     openProfile: 'Open Profile',
     viewProfile: 'View Profile',
     fullProfile: 'Full Profile',
@@ -1008,6 +1204,10 @@ export const UI_EN: UiTranslations = {
   },
   controls: {
     title: 'Design & Language Controls',
+    deviceTitle: 'Responsive Device Preview:',
+    desktop: 'Desktop (100%)',
+    tablet: 'Tablet (768px)',
+    mobile: 'Mobile (390px)',
     layoutTitle: 'Homepage Layout Version:',
     v1Title: 'V1: PDF Replica',
     v1Desc: 'Classic & Clean',

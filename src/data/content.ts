@@ -138,6 +138,100 @@ export const TEAM_MEMBERS: TeamMember[] = [
     languages: ['Deutsch', 'Französisch', 'Englisch', 'Arabisch'],
     email: 'mohamed.hasnaoui@baudenbacher.law',
     phone: '+41 44 260 88 00'
+  },
+  {
+    id: 'sophie-von-arx',
+    name: 'MLaw Sophie V. von Arx',
+    title: 'Master of Law (MLaw), Substitutin',
+    role: 'Anwaltssubstitutin / Trainee Lawyer',
+    location: 'Zürich',
+    category: 'substitute',
+    imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=85',
+    bio: 'MLaw Sophie V. von Arx unterstützt das Team in wirtschaftsrechtlichen Fragestellungen, bei gesellschaftsrechtlichen Umstrukturierungen sowie im Sanktions- und Vollstreckungsrecht.',
+    specializations: [
+      'Wirtschafts- und Gesellschaftsrecht',
+      'Sanktionsrecht & Compliance',
+      'Vertragsgestaltung',
+      'Zivilprozessrecht'
+    ],
+    education: [
+      'Master of Law (MLaw), Universität St. Gallen (HSG)',
+      'Bachelor of Law (BLaw), Universität St. Gallen (HSG)'
+    ],
+    languages: ['Deutsch', 'Englisch', 'Französisch'],
+    email: 'sophie.vonarx@baudenbacher.law',
+    phone: '+41 44 260 88 00'
+  },
+  {
+    id: 'julian-keller',
+    name: 'MLaw Julian A. Keller',
+    title: 'Master of Law (MLaw), Substitut',
+    role: 'Anwaltssubstitut / Trainee Lawyer',
+    location: 'Zürich',
+    category: 'substitute',
+    imageUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=85',
+    bio: 'MLaw Julian A. Keller ist schwerpunktmässig in den Bereichen Europarecht, öffentliches Wirtschaftsrecht und regulatorische Verfahren vor schweizerischen und europäischen Stellen tätig.',
+    specializations: [
+      'Europarecht & EWR-Recht',
+      'Öffentliches Wirtschaftsrecht',
+      'Regulatorische Streitigkeiten',
+      'Kartellrecht'
+    ],
+    education: [
+      'Master of Law (MLaw), Universität Zürich (UZH)',
+      'Bachelor of Law (BLaw), Universität Zürich (UZH)'
+    ],
+    languages: ['Deutsch', 'Englisch', 'Italienisch'],
+    email: 'julian.keller@baudenbacher.law',
+    phone: '+41 44 260 88 00'
+  },
+  {
+    id: 'elena-rossi',
+    name: 'MLaw Elena Rossi',
+    title: 'Master of Law (MLaw), LL.M., Substitutin',
+    role: 'Anwaltssubstitutin / Trainee Lawyer',
+    location: 'Zürich & Brüssel',
+    category: 'substitute',
+    imageUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=85',
+    bio: 'MLaw Elena Rossi berät in grenzüberschreitenden Verfahren im Bereich Kartell-, Beihilfen- und Binnenmarktrecht mit besonderem Fokus auf die Schnittstelle zwischen der Schweiz und der Europäischen Union.',
+    specializations: [
+      'EU-Wettbewerbsrecht',
+      'Binnenmarktrecht & Grundfreiheiten',
+      'Internationale Streitbeilegung',
+      'Regulierung'
+    ],
+    education: [
+      'Master of European Law (LL.M.), College of Europe (Bruges)',
+      'Master of Law (MLaw), Universität Bern',
+      'Bachelor of Law (BLaw), Universität Genf'
+    ],
+    languages: ['Deutsch', 'Französisch', 'Englisch', 'Italienisch'],
+    email: 'elena.rossi@baudenbacher.law',
+    phone: '+41 44 260 88 00'
+  },
+  {
+    id: 'lukas-widmer',
+    name: 'MLaw Lukas C. Widmer',
+    title: 'Master of Law (MLaw), Substitut',
+    role: 'Anwaltssubstitut / Trainee Lawyer',
+    location: 'Zürich',
+    category: 'substitute',
+    imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=85',
+    bio: 'MLaw Lukas C. Widmer unterstützt Mandanten bei komplexen zivilprozessualen Streitigkeiten, nationalen und internationalen Schiedsverfahren sowie gesellschaftsrechtlichen Gutachten.',
+    specializations: [
+      'Internationale Schiedsgerichtsbarkeit',
+      'Zivilprozessrecht & Vollstreckung',
+      'Handelsrecht',
+      'Vertragsrecht'
+    ],
+    education: [
+      'Master of Law (MLaw), Universität Basel',
+      'LL.M. in Transnational Law, King\'s College London',
+      'Bachelor of Law (BLaw), Universität Basel'
+    ],
+    languages: ['Deutsch', 'Englisch', 'Französisch'],
+    email: 'lukas.widmer@baudenbacher.law',
+    phone: '+41 44 260 88 00'
   }
 ];
 

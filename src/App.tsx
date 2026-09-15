@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { HomePageV1 } from './components/v1/HomePageV1';
-import { HomePageV2 } from './components/v2/HomePageV2';
 import { TeamMemberProfilePage } from './components/pages/TeamMemberProfilePage';
 import { PracticeAreaPage } from './components/pages/PracticeAreaPage';
+import { TeamOverviewPage } from './components/pages/TeamOverviewPage';
+import { PracticeAreasOverviewPage } from './components/pages/PracticeAreasOverviewPage';
+import { ContactPage } from './components/pages/ContactPage';
 import { TeamModal } from './components/TeamModal';
 import { ContactModal } from './components/ContactModal';
 import { ValuesModal } from './components/ValuesModal';
 import { AllPracticesModal } from './components/AllPracticesModal';
 import { ElementorGuideModal } from './components/ElementorGuideModal';
 import { LiveDesignControls } from './components/LiveDesignControls';
-import { HomePageVersion, TeamMember, PracticeArea, Language, ActiveView } from './types';
+import { TeamMember, PracticeArea, Language, ActiveView } from './types';
 
 export default function App() {
-  const [pageVersion, setPageVersion] = useState<HomePageVersion>('version1');
   const [language, setLanguage] = useState<Language>('de');
   const [activeView, setActiveView] = useState<ActiveView>('home');
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
@@ -54,83 +55,132 @@ export default function App() {
     setActiveView('practice-area-template');
   };
 
-  return (
-    <div className="min-h-screen flex flex-col selection:bg-[#C6A15B]/30 selection:text-[#213134]">
-      
-      {/* 1. Main View Rendering */}
-      {activeView === 'team-member-template' ? (
+  const renderActiveContent = () => {
+    if (activeView === 'team-overview') {
+      return (
+        <TeamOverviewPage
+          language={language}
+          onBackToHome={() => setActiveView('home')}
+          onOpenMemberDetails={handleOpenMemberDetails}
+          onOpenContact={(officeCity) => handleOpenContactWithOffice(officeCity || 'Zürich')}
+          onNavigateToPracticesOverview={() => setActiveView('practice-areas-overview')}
+          onNavigateToContactPage={() => setActiveView('contact')}
+          onOpenElementorGuide={() => setIsElementorGuideOpen(true)}
+        />
+      );
+    }
+
+    if (activeView === 'practice-areas-overview') {
+      return (
+        <PracticeAreasOverviewPage
+          language={language}
+          onBackToHome={() => setActiveView('home')}
+          onSelectPractice={(practiceId) => {
+            setSelectedPracticeId(practiceId);
+            setActiveView('practice-area-template');
+          }}
+          onOpenContact={(officeCity, practice) => handleOpenContactWithOffice(officeCity || 'Zürich', practice)}
+          onNavigateToTeamMember={(memberId) => {
+            setSelectedMemberId(memberId);
+            setActiveView('team-member-template');
+          }}
+          onNavigateToTeamOverview={() => setActiveView('team-overview')}
+          onNavigateToContactPage={() => setActiveView('contact')}
+          onOpenElementorGuide={() => setIsElementorGuideOpen(true)}
+        />
+      );
+    }
+
+    if (activeView === 'contact') {
+      return (
+        <ContactPage
+          language={language}
+          initialOffice={contactDefaultOffice}
+          initialPractice={contactDefaultPractice}
+          onBackToHome={() => setActiveView('home')}
+          onOpenElementorGuide={() => setIsElementorGuideOpen(true)}
+          onNavigateToTeamOverview={() => setActiveView('team-overview')}
+          onNavigateToPracticesOverview={() => setActiveView('practice-areas-overview')}
+          onNavigateToPractice={(practiceId) => {
+            setSelectedPracticeId(practiceId);
+            setActiveView('practice-area-template');
+          }}
+        />
+      );
+    }
+
+    if (activeView === 'team-member-template') {
+      return (
         <TeamMemberProfilePage
           language={language}
-          pageVersion={pageVersion}
           selectedMemberId={selectedMemberId}
-          onSelectVersion={setPageVersion}
           onBackToHome={() => setActiveView('home')}
+          onBackToOverview={() => setActiveView('team-overview')}
           onOpenContact={(officeCity) => handleOpenContactWithOffice(officeCity || 'Zürich')}
           onNavigateToPractice={(practiceId) => {
             setSelectedPracticeId(practiceId || 'europarecht');
             setActiveView('practice-area-template');
           }}
           onSelectOtherMember={(memberId) => setSelectedMemberId(memberId)}
+          onNavigateToTeamOverview={() => setActiveView('team-overview')}
+          onNavigateToPracticesOverview={() => setActiveView('practice-areas-overview')}
+          onNavigateToContactPage={() => setActiveView('contact')}
           onOpenElementorGuide={() => setIsElementorGuideOpen(true)}
         />
-      ) : activeView === 'practice-area-template' ? (
+      );
+    }
+
+    if (activeView === 'practice-area-template') {
+      return (
         <PracticeAreaPage
           language={language}
-          pageVersion={pageVersion}
           selectedPracticeId={selectedPracticeId}
-          onSelectVersion={setPageVersion}
           onBackToHome={() => setActiveView('home')}
+          onBackToOverview={() => setActiveView('practice-areas-overview')}
+          onSelectOtherPractice={(practiceId) => setSelectedPracticeId(practiceId)}
           onOpenContact={(officeCity, practice) => handleOpenContactWithOffice(officeCity || 'Zürich', practice || 'Europarecht')}
           onNavigateToTeamMember={(memberId) => {
             setSelectedMemberId(memberId || 'laura-baudenbacher');
             setActiveView('team-member-template');
           }}
+          onNavigateToTeamOverview={() => setActiveView('team-overview')}
+          onNavigateToContactPage={() => setActiveView('contact')}
           onOpenElementorGuide={() => setIsElementorGuideOpen(true)}
         />
-      ) : pageVersion === 'version1' ? (
-        <HomePageV1
-          pageVersion={pageVersion}
-          language={language}
-          onSelectVersion={setPageVersion}
-          onSelectMember={(member) => setSelectedMember(member)}
-          onOpenMemberDetails={handleOpenMemberDetails}
-          onSelectPractice={handleSelectPracticeDirectly}
-          onOpenContact={() => setIsContactOpen(true)}
-          onSelectOffice={handleOpenContactWithOffice}
-          onOpenValuesDetail={() => setIsValuesOpen(true)}
-          onExploreAllPractices={() => setIsAllPracticesOpen(true)}
-          onOpenElementorGuide={() => setIsElementorGuideOpen(true)}
-        />
-      ) : (
-        <HomePageV2
-          pageVersion={pageVersion}
-          language={language}
-          onSelectVersion={setPageVersion}
-          onSelectMember={(member) => setSelectedMember(member)}
-          onOpenMemberDetails={handleOpenMemberDetails}
-          onSelectPractice={handleSelectPracticeDirectly}
-          onOpenContact={() => setIsContactOpen(true)}
-          onSelectOffice={handleOpenContactWithOffice}
-          onOpenValuesDetail={() => setIsValuesOpen(true)}
-          onExploreAllPractices={() => setIsAllPracticesOpen(true)}
-          onOpenElementorGuide={() => setIsElementorGuideOpen(true)}
-        />
-      )}
+      );
+    }
 
-      {/* Floating Live Design Controls for instant layout, template view, language & gold tone switching */}
+    return (
+      <HomePageV1
+        language={language}
+        onSelectMember={(member) => setSelectedMember(member)}
+        onOpenMemberDetails={handleOpenMemberDetails}
+        onSelectPractice={handleSelectPracticeDirectly}
+        onOpenContact={() => handleOpenContactWithOffice('Zürich')}
+        onSelectOffice={handleOpenContactWithOffice}
+        onOpenValuesDetail={() => setIsValuesOpen(true)}
+        onExploreAllPractices={() => setActiveView('practice-areas-overview')}
+        onOpenElementorGuide={() => setIsElementorGuideOpen(true)}
+        onViewAllTeam={() => setActiveView('team-overview')}
+        onNavigateToPracticesOverview={() => setActiveView('practice-areas-overview')}
+        onNavigateToContactPage={() => setActiveView('contact')}
+      />
+    );
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col selection:bg-[#C6A15B]/30 selection:text-[#213134]">
+      {/* Active Page View */}
+      {renderActiveContent()}
+
+      {/* Floating Live Design Controls */}
       <LiveDesignControls
-        pageVersion={pageVersion}
-        onSelectPageVersion={setPageVersion}
         language={language}
         onSelectLanguage={setLanguage}
-        goldTone={goldTone}
-        onSelectGoldTone={setGoldTone}
-        activeView={activeView}
-        onSelectActiveView={setActiveView}
         onOpenElementorGuide={() => setIsElementorGuideOpen(true)}
       />
 
-      {/* Interactive Quickview Modal for Team Members (ONLY triggered via Portrait & Image button) */}
+      {/* Interactive Quickview Modal for Team Members */}
       <TeamModal
         member={selectedMember}
         language={language}
@@ -156,7 +206,7 @@ export default function App() {
         onOpenContact={() => setIsContactOpen(true)}
       />
 
-      {/* Full Directory of All Practice Areas Modal (Directly navigates to practice area page on select) */}
+      {/* Full Directory of All Practice Areas Modal */}
       <AllPracticesModal
         isOpen={isAllPracticesOpen}
         language={language}

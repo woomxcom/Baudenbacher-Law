@@ -1,7 +1,14 @@
 export type HomePageVersion = 'version1' | 'version2';
 export type HeroVersion = HomePageVersion;
 export type Language = 'de' | 'en';
-export type ActiveView = 'home' | 'team-member-template' | 'practice-area-template';
+export type ActiveView = 
+  | 'home' 
+  | 'team-overview' 
+  | 'team-member-template' 
+  | 'practice-areas-overview' 
+  | 'practice-area-template' 
+  | 'contact';
+export type DeviceMode = 'desktop' | 'tablet' | 'mobile';
 
 export interface CitySlide {
   id: string;
@@ -28,7 +35,7 @@ export interface TeamMember {
   languages: string[];
   email: string;
   phone: string;
-  category?: 'partner' | 'counsel' | 'associate';
+  category?: 'partner' | 'counsel' | 'associate' | 'substitute';
 }
 
 export interface PracticeArea {

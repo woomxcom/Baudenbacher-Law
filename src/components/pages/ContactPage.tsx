@@ -128,9 +128,23 @@ export const ContactPage: React.FC<ContactPageProps> = ({
       />
 
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="bg-[#213134] text-white pt-24 sm:pt-28 pb-16 md:pb-20 border-b border-[#31464a]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Hero Section with Background Image and Dark Petrol Overlay */}
+        <section className="relative overflow-hidden bg-[#213134] text-white pt-24 sm:pt-28 pb-16 md:pb-20 border-b border-[#31464a]">
+          {/* Background Image with Dark Petrol Overlay */}
+          <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=2000&q=85"
+              alt="Baudenbacher Law Global Offices & Contact"
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover object-center filter brightness-75 scale-105"
+            />
+            {/* Multi-layered dark petrol overlay */}
+            <div className="absolute inset-0 bg-[#213134]/85 mix-blend-multiply" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#213134] via-[#213134]/90 to-[#213134]/70" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#213134] via-transparent to-[#213134]/40" />
+          </div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Back to Home Button */}
             <div className="mb-6">
               <button

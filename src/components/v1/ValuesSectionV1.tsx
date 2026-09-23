@@ -25,9 +25,10 @@ export const ValuesSectionV1: React.FC<ValuesSectionV1Props> = ({
           {/* Left Column: Editorial Text (Matching PDF exactly) */}
           <div className="lg:col-span-6 flex flex-col justify-center">
             
-            {/* Eyebrow */}
-            <div className="mb-4">
-              <span className="font-sans text-xs tracking-[0.25em] uppercase text-[#C6A15B] font-semibold">
+            {/* Eyebrow with both purple tones */}
+            <div className="flex items-center gap-2.5 mb-4">
+              <span className="w-6 h-[2px] bg-[#7C3AED]"></span>
+              <span className="font-sans text-xs tracking-[0.25em] uppercase text-[#A982F2] font-semibold">
                 {ui.values.eyebrow}
               </span>
             </div>
@@ -47,17 +48,17 @@ export const ValuesSectionV1: React.FC<ValuesSectionV1Props> = ({
               {ui.values.p2}
             </p>
 
-            {/* CTA Link matching PDF: "Mehr über unsere Werte  →" */}
+            {/* CTA Link with purple styling: "Mehr über unsere Werte →" */}
             <div className="pt-2">
               <button
                 id="v1-values-cta-btn"
                 onClick={onOpenValuesDetail}
-                className="inline-flex items-center gap-3 text-sm font-sans font-medium text-[#C6A15B] hover:text-white tracking-wider uppercase transition-colors group"
+                className="inline-flex items-center gap-3 text-sm font-sans font-medium text-[#A982F2] hover:text-white tracking-wider uppercase transition-colors group cursor-pointer"
               >
-                <span className="border-b border-[#C6A15B]/50 group-hover:border-white pb-0.5">
+                <span className="border-b-2 border-[#7C3AED] group-hover:border-[#A982F2] pb-0.5 transition-colors">
                   {ui.values.cta}
                 </span>
-                <ArrowRight className="w-4 h-4 text-[#C6A15B] group-hover:translate-x-1.5 transition-transform" />
+                <ArrowRight className="w-4 h-4 text-[#A982F2] group-hover:text-[#7C3AED] group-hover:translate-x-1.5 transition-transform" />
               </button>
             </div>
 
@@ -75,14 +76,14 @@ export const ValuesSectionV1: React.FC<ValuesSectionV1Props> = ({
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#213134]/80 via-transparent to-black/20"></div>
                 
-                {/* Floating Architectural Badge */}
-                <div className="absolute bottom-6 left-6 right-6 p-4 bg-[#213134]/90 backdrop-blur-xs border border-[#C6A15B]/40 flex items-center justify-between">
+                {/* Floating Architectural Badge with purple accents */}
+                <div className="absolute bottom-6 left-6 right-6 p-4 bg-[#213134]/95 backdrop-blur-xs border border-[#7C3AED]/50 flex items-center justify-between shadow-lg">
                   <div>
                     <div className="font-serif text-sm text-white font-medium">{ui.values.badgeTitle}</div>
                     <div className="text-[11px] font-sans text-[#E4D9CC]/75 mt-0.5">{ui.values.badgeSubtitle}</div>
                   </div>
-                  <div className="w-8 h-8 rounded-full bg-[#C6A15B]/20 flex items-center justify-center border border-[#C6A15B]/50">
-                    <Award className="w-4 h-4 text-[#C6A15B]" />
+                  <div className="w-9 h-9 rounded-full bg-[#7C3AED]/25 flex items-center justify-center border border-[#A982F2]/60 shadow-xs">
+                    <Award className="w-4 h-4 text-[#A982F2]" />
                   </div>
                 </div>
               </div>

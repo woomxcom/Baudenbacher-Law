@@ -155,9 +155,23 @@ export const TeamMemberProfilePage: React.FC<TeamMemberProfilePageProps> = ({
       {/* Main Profile Page Body */}
       <main className="flex-1 pb-20">
 
-        {/* Profile Hero Header / Identity Banner */}
-        <section className="bg-[#213134] text-white border-b border-[#31464a] pt-24 sm:pt-28 pb-12 md:pb-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Profile Hero Header / Identity Banner with Background Image and Dark Petrol Overlay */}
+        <section className="relative overflow-hidden bg-[#213134] text-white border-b border-[#31464a] pt-24 sm:pt-28 pb-12 md:pb-16">
+          {/* Background Image with Dark Petrol Overlay */}
+          <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=85"
+              alt="Baudenbacher Law Practice Atmosphere"
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover object-center filter brightness-75 scale-105"
+            />
+            {/* Multi-layered dark petrol overlay */}
+            <div className="absolute inset-0 bg-[#213134]/85 mix-blend-multiply" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#213134] via-[#213134]/90 to-[#213134]/70" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#213134] via-transparent to-[#213134]/40" />
+          </div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Direct Back to Home / Team navigation */}
             <div className="mb-6 flex flex-wrap items-center gap-3">
               {(onBackToOverview || onNavigateToTeamOverview) && (

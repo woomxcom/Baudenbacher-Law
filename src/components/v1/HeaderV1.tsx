@@ -12,6 +12,7 @@ interface HeaderV1Props {
   onNavigateToTeamOverview?: () => void;
   onNavigateToPracticesOverview?: () => void;
   onNavigateToContactPage?: () => void;
+  onNavigateToBlogOverview?: () => void;
 }
 
 export const HeaderV1: React.FC<HeaderV1Props> = ({
@@ -21,7 +22,8 @@ export const HeaderV1: React.FC<HeaderV1Props> = ({
   onBackToHome,
   onNavigateToTeamOverview,
   onNavigateToPracticesOverview,
-  onNavigateToContactPage
+  onNavigateToContactPage,
+  onNavigateToBlogOverview
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -175,6 +177,23 @@ export const HeaderV1: React.FC<HeaderV1Props> = ({
                   <span>{ui.nav.practices}</span>
                   <span className="block text-[11px] font-sans text-[#E4D9CC]/60 font-light mt-0.5">
                     {language === 'en' ? 'Overview & Detail Guides' : 'Übersicht & Fachgebiete'}
+                  </span>
+                </div>
+                <ArrowRight className="w-4 h-4 text-[#C6A15B] opacity-75 group-hover:opacity-100 transition-all" />
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  if (onNavigateToBlogOverview) onNavigateToBlogOverview();
+                }}
+                className="text-left font-serif text-lg sm:text-xl text-white hover:text-[#C6A15B] transition-colors flex items-center justify-between group py-3 border-b border-white/5 cursor-pointer"
+              >
+                <div>
+                  <span>{language === 'en' ? 'Insights & Blog' : 'Aktuelles & Blog'}</span>
+                  <span className="block text-[11px] font-sans text-[#E4D9CC]/60 font-light mt-0.5">
+                    {language === 'en' ? 'Legal Analyses & Publications' : 'Analysen & Publikationen'}
                   </span>
                 </div>
                 <ArrowRight className="w-4 h-4 text-[#C6A15B] opacity-75 group-hover:opacity-100 transition-all" />

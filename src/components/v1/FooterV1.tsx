@@ -11,6 +11,7 @@ interface FooterV1Props {
   onNavigateToTeamOverview?: () => void;
   onNavigateToPracticesOverview?: () => void;
   onNavigateToContactPage?: () => void;
+  onNavigateToBlogOverview?: () => void;
 }
 
 export const FooterV1: React.FC<FooterV1Props> = ({
@@ -19,7 +20,8 @@ export const FooterV1: React.FC<FooterV1Props> = ({
   onBackToHome,
   onNavigateToTeamOverview,
   onNavigateToPracticesOverview,
-  onNavigateToContactPage
+  onNavigateToContactPage,
+  onNavigateToBlogOverview
 }) => {
   const { ui } = getLocalizedData(language);
 
@@ -98,6 +100,17 @@ export const FooterV1: React.FC<FooterV1Props> = ({
                   className="hover:text-[#C6A15B] transition-colors cursor-pointer"
                 >
                   {ui.nav.practices}
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (onNavigateToBlogOverview) onNavigateToBlogOverview();
+                  }}
+                  className="hover:text-[#C6A15B] transition-colors cursor-pointer"
+                >
+                  {language === 'en' ? 'Insights & Blog' : 'Aktuelles & Blog'}
                 </button>
               </li>
               <li>

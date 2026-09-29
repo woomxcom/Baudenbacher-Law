@@ -151,7 +151,7 @@ export const ElementorGuideModal: React.FC<ElementorGuideModalProps> = ({ isOpen
         </div>
 
         {/* Section 4: Section Breakdown Checklist */}
-        <div className="p-6 bg-[#182426] border border-[#31464a]">
+        <div className="mb-10 p-6 bg-[#182426] border border-[#31464a]">
           <h3 className="font-serif text-lg text-white font-medium mb-3 flex items-center gap-2">
             <Code2 className="w-4 h-4 text-[#C6A15B]" />
             4. Modul-Übersicht für Elementor-Seitenaufbau
@@ -186,6 +186,30 @@ export const ElementorGuideModal: React.FC<ElementorGuideModalProps> = ({ isOpen
               <strong>7. Standorte & Footer:</strong> 3-Spalten Adressen (Zürich, Brüssel, Oslo) + Rechtliches.
             </li>
           </ul>
+        </div>
+
+        {/* Section 5: Blog Overview & Single Post Elementor Templates */}
+        <div className="p-6 bg-[#182426] border border-[#31464a]">
+          <h3 className="font-serif text-lg text-white font-medium mb-3 flex items-center gap-2">
+            <Sparkles className="w-4 h-4 text-[#C6A15B]" />
+            5. Blog-Übersicht & Einzelbeitrags-Template (Elementor Theme Builder)
+          </h3>
+          <div className="space-y-3 font-sans text-xs sm:text-sm text-[#E4D9CC]/85 font-light leading-relaxed">
+            <div className="p-3 bg-[#213134] border-l-2 border-[#C6A15B]">
+              <strong className="text-white">Blog-Archiv (Archive Posts Template):</strong> Hero-Container mit dunklem Petrol-Overlay (<code className="text-[#C6A15B]">#213134</code>) und Titel. Darunter das Elementor <em>Loop Grid</em> oder <em>Archive Posts</em> Widget im 3-Spalten-Raster. Jede Karte benötigt nur Thumbnail, Kategorie-Badge, H3 Titel in Georgia, Excerpt und Autor.
+            </div>
+            <div className="p-3 bg-[#213134] border-l-2 border-[#C6A15B]">
+              <strong className="text-white">Einzelbeitrag (Single Post Template):</strong> Ganz bewusst schlicht und linear aufgebaut, damit Redakteure neue Artikel direkt über den Standard WordPress-Editor (Gutenberg) verfassen können:
+              <ul className="list-disc list-inside mt-2 space-y-1 text-xs text-[#E4D9CC]/80">
+                <li><strong>Hero-Bereich:</strong> Titel-Widget (<code className="text-[#C6A15B]">Post Title</code>), Beitrags-Info (<code className="text-[#C6A15B]">Post Info</code>: Autor, Datum, Kategorie).</li>
+                <li><strong>Beitragsbild:</strong> Beitragsbild-Widget (<code className="text-[#C6A15B]">Featured Image</code>) zentriert auf max. 960px Breite.</li>
+                <li><strong>Haupttext:</strong> Standard <em>Post Content</em> Widget (rendert saubere Absätze, H2, Zitate mit Goldrand und Aufzählungen).</li>
+                <li><strong>Autorenbox:</strong> Elementor <em>Author Box</em> Widget mit Verlinkung zum Anwaltsprofil.</li>
+                <li><strong>Beitragsnavigation:</strong> Elementor <em>Post Navigation</em> Widget (Vorheriger / Nächster Beitrag).</li>
+                <li><strong>Verwandte Beiträge & Kontakt-CTA:</strong> Standard-Container am Seitenende.</li>
+              </ul>
+            </div>
+          </div>
         </div>
 
         <div className="mt-8 pt-6 border-t border-[#31464a] flex justify-end">

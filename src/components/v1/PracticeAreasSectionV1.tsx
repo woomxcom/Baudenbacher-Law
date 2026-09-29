@@ -17,7 +17,7 @@ export const PracticeAreasSectionV1: React.FC<PracticeAreasSectionV1Props> = ({
   const { practices: practiceAreas, ui } = getLocalizedData(language);
 
   const renderIcon = (iconName: string) => {
-    const iconClass = "w-7 h-7 text-[#213134] group-hover:text-[#7C3AED] transition-colors stroke-[1.3]";
+    const iconClass = "w-7 h-7 text-[#213134] group-hover:text-[#C6A15B] transition-colors stroke-[1.3]";
     switch (iconName) {
       case 'shield':
         return <Shield className={iconClass} />;
@@ -41,11 +41,11 @@ export const PracticeAreasSectionV1: React.FC<PracticeAreasSectionV1Props> = ({
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header with new purple accent */}
+        {/* Section Header with refined gold accent */}
         <div className="max-w-3xl mb-16 md:mb-20">
           <div className="flex items-center gap-2.5 mb-3">
-            <span className="w-6 h-[2px] bg-[#7C3AED]"></span>
-            <span className="font-sans text-xs tracking-[0.25em] uppercase text-[#7C3AED] font-semibold">
+            <span className="w-6 h-[2px] bg-[#C6A15B]"></span>
+            <span className="font-sans text-xs tracking-[0.25em] uppercase text-[#8a6828] font-semibold">
               {ui.practices.eyebrow}
             </span>
           </div>
@@ -73,13 +73,13 @@ export const PracticeAreasSectionV1: React.FC<PracticeAreasSectionV1Props> = ({
               } transition-all duration-300 hover:translate-y-[-2px]`}
             >
               <div>
-                {/* Minimalist Line Icon with new purple accents (#7C3AED and #A982F2) */}
-                <div className="mb-6 inline-flex p-2.5 bg-[#E4D9CC]/30 border border-transparent group-hover:bg-[#7C3AED]/10 group-hover:border-[#A982F2]/50 transition-all duration-300">
+                {/* Minimalist Line Icon with refined gold accents */}
+                <div className="mb-6 inline-flex p-2.5 bg-[#E4D9CC]/30 border border-transparent group-hover:bg-[#C6A15B]/10 group-hover:border-[#C6A15B]/40 transition-all duration-300">
                   {renderIcon(area.iconName)}
                 </div>
 
-                {/* Title in Georgia serif with purple hover */}
-                <h3 className="font-serif text-xl sm:text-2xl font-normal text-[#213134] group-hover:text-[#7C3AED] transition-colors mb-3.5">
+                {/* Title in Georgia serif with gold hover */}
+                <h3 className="font-serif text-xl sm:text-2xl font-normal text-[#213134] group-hover:text-[#8a6828] transition-colors mb-3.5">
                   {area.title}
                 </h3>
 
@@ -89,9 +89,9 @@ export const PracticeAreasSectionV1: React.FC<PracticeAreasSectionV1Props> = ({
                 </p>
               </div>
 
-              {/* Arrow CTA link with purple tone */}
-              <div className="mt-auto pt-4 flex items-center justify-between text-xs font-sans text-[#7C3AED] group-hover:text-[#213134] transition-colors">
-                <span className="font-medium text-[#7C3AED] group-hover:text-[#213134] transition-colors">
+              {/* Arrow CTA link with gold tone */}
+              <div className="mt-auto pt-4 flex items-center justify-between text-xs font-sans text-[#8a6828] group-hover:text-[#213134] transition-colors">
+                <span className="font-medium text-[#8a6828] group-hover:text-[#213134] transition-colors">
                   {language === 'en' ? 'Learn more' : 'Mehr erfahren'}
                 </span>
                 <span className="text-lg font-light group-hover:translate-x-1.5 transition-transform duration-300">

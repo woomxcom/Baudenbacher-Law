@@ -22,6 +22,7 @@ interface HomePageV1Props {
   onViewAllTeam?: () => void;
   onNavigateToPracticesOverview?: () => void;
   onNavigateToContactPage?: () => void;
+  onNavigateToBlogOverview?: () => void;
 }
 
 export const HomePageV1: React.FC<HomePageV1Props> = ({
@@ -36,7 +37,8 @@ export const HomePageV1: React.FC<HomePageV1Props> = ({
   onOpenElementorGuide,
   onViewAllTeam,
   onNavigateToPracticesOverview,
-  onNavigateToContactPage
+  onNavigateToContactPage,
+  onNavigateToBlogOverview
 }) => {
   const handleViewAllTeam = () => {
     if (onViewAllTeam) {
@@ -57,6 +59,7 @@ export const HomePageV1: React.FC<HomePageV1Props> = ({
         onNavigateToTeamOverview={onViewAllTeam}
         onNavigateToPracticesOverview={onNavigateToPracticesOverview || onExploreAllPractices}
         onNavigateToContactPage={onNavigateToContactPage || onOpenContact}
+        onNavigateToBlogOverview={onNavigateToBlogOverview}
       />
 
       <main className="flex-grow">
@@ -96,6 +99,7 @@ export const HomePageV1: React.FC<HomePageV1Props> = ({
         onNavigateToTeamOverview={onViewAllTeam}
         onNavigateToPracticesOverview={onNavigateToPracticesOverview || onExploreAllPractices}
         onNavigateToContactPage={onNavigateToContactPage || onOpenContact}
+        onNavigateToBlogOverview={onNavigateToBlogOverview}
       />
     </div>
   );

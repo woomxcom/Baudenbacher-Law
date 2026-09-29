@@ -5,13 +5,16 @@ import { PracticeAreaPage } from './components/pages/PracticeAreaPage';
 import { TeamOverviewPage } from './components/pages/TeamOverviewPage';
 import { PracticeAreasOverviewPage } from './components/pages/PracticeAreasOverviewPage';
 import { ContactPage } from './components/pages/ContactPage';
+import { BlogOverviewPage } from './components/pages/BlogOverviewPage';
+import { BlogPostPage } from './components/pages/BlogPostPage';
 import { TeamModal } from './components/TeamModal';
 import { ContactModal } from './components/ContactModal';
 import { ValuesModal } from './components/ValuesModal';
 import { AllPracticesModal } from './components/AllPracticesModal';
 import { ElementorGuideModal } from './components/ElementorGuideModal';
 import { LiveDesignControls } from './components/LiveDesignControls';
-import { TeamMember, PracticeArea, Language, ActiveView } from './types';
+import { TeamMember, PracticeArea, Language, ActiveView, BlogPost } from './types';
+import { BLOG_POSTS } from './data/blogData';
 
 export default function App() {
   const [language, setLanguage] = useState<Language>('de');
@@ -19,6 +22,7 @@ export default function App() {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const [selectedMemberId, setSelectedMemberId] = useState<string>('laura-baudenbacher');
   const [selectedPracticeId, setSelectedPracticeId] = useState<string>('europarecht');
+  const [selectedBlogPost, setSelectedBlogPost] = useState<BlogPost>(BLOG_POSTS[0]);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [contactDefaultOffice, setContactDefaultOffice] = useState('Zürich');
   const [contactDefaultPractice, setContactDefaultPractice] = useState('');
@@ -35,7 +39,7 @@ export default function App() {
   // Scroll to top when view changes
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
-  }, [activeView, selectedMemberId, selectedPracticeId]);
+  }, [activeView, selectedMemberId, selectedPracticeId, selectedBlogPost]);
 
   const handleOpenContactWithOffice = (officeCity: string, practiceName?: string) => {
     setContactDefaultOffice(officeCity || 'Zürich');
@@ -150,6 +154,42 @@ export default function App() {
       );
     }
 
+    if (activeView === 'blog-overview') {
+      return (
+        <BlogOverviewPage
+          language={language}
+          onBackToHome={() => setActiveView('home')}
+          onSelectPost={(post) => {
+            setSelectedBlogPost(post);
+            setActiveView('blog-post-template');
+          }}
+          onOpenContact={(officeCity, topic) => handleOpenContactWithOffice(officeCity || 'Zürich', topic)}
+          onNavigateToTeamOverview={() => setActiveView('team-overview')}
+          onNavigateToPracticesOverview={() => setActiveView('practice-areas-overview')}
+          onNavigateToContactPage={() => setActiveView('contact')}
+          onOpenElementorGuide={() => setIsElementorGuideOpen(true)}
+        />
+      );
+    }
+
+    if (activeView === 'blog-post-template') {
+      return (
+        <BlogPostPage
+          language={language}
+          post={selectedBlogPost}
+          onBackToOverview={() => setActiveView('blog-overview')}
+          onBackToHome={() => setActiveView('home')}
+          onSelectPost={(post) => setSelectedBlogPost(post)}
+          onNavigateToAuthor={(memberId) => handleOpenMemberDetails(memberId)}
+          onOpenContact={(officeCity, topic) => handleOpenContactWithOffice(officeCity || 'Zürich', topic)}
+          onNavigateToTeamOverview={() => setActiveView('team-overview')}
+          onNavigateToPracticesOverview={() => setActiveView('practice-areas-overview')}
+          onNavigateToContactPage={() => setActiveView('contact')}
+          onOpenElementorGuide={() => setIsElementorGuideOpen(true)}
+        />
+      );
+    }
+
     return (
       <HomePageV1
         language={language}
@@ -164,6 +204,7 @@ export default function App() {
         onViewAllTeam={() => setActiveView('team-overview')}
         onNavigateToPracticesOverview={() => setActiveView('practice-areas-overview')}
         onNavigateToContactPage={() => setActiveView('contact')}
+        onNavigateToBlogOverview={() => setActiveView('blog-overview')}
       />
     );
   };
@@ -178,6 +219,8 @@ export default function App() {
         language={language}
         onSelectLanguage={setLanguage}
         onOpenElementorGuide={() => setIsElementorGuideOpen(true)}
+        activeView={activeView}
+        onSelectView={setActiveView}
       />
 
       {/* Interactive Quickview Modal for Team Members */}

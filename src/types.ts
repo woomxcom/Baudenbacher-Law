@@ -7,8 +7,53 @@ export type ActiveView =
   | 'team-member-template' 
   | 'practice-areas-overview' 
   | 'practice-area-template' 
-  | 'contact';
+  | 'contact'
+  | 'blog-overview'
+  | 'blog-post-template';
 export type DeviceMode = 'desktop' | 'tablet' | 'mobile';
+
+export interface BlogPost {
+  id: string;
+  slug: string;
+  title: string;
+  titleEn?: string;
+  excerpt: string;
+  excerptEn?: string;
+  category: string;
+  categoryEn?: string;
+  date: string;
+  dateEn?: string;
+  readTime: string;
+  readTimeEn?: string;
+  imageUrl: string;
+  imageCaption?: string;
+  imageCaptionEn?: string;
+  author: {
+    name: string;
+    role: string;
+    roleEn?: string;
+    memberId?: string;
+    avatarUrl: string;
+  };
+  tags: string[];
+  featured?: boolean;
+  relatedPracticeId?: string;
+  // Structured post content blocks for easy Elementor translation
+  leadParagraph: string;
+  leadParagraphEn?: string;
+  sections: {
+    heading: string;
+    headingEn?: string;
+    paragraphs: string[];
+    paragraphsEn?: string[];
+    quote?: string;
+    quoteEn?: string;
+    bullets?: string[];
+    bulletsEn?: string[];
+  }[];
+  keyTakeaways?: string[];
+  keyTakeawaysEn?: string[];
+}
 
 export interface CitySlide {
   id: string;
